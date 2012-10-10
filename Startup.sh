@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #get the opendata_workshop opendata files from git hub
-git clone https://github.com/davecoa/opendataday_workshop.git
+#git clone https://github.com/davecoa/opendataday_workshop.git
 
 #replace the settings python script with the git hub copy the new python importer script from git hub repository 
 mv /home/openblock/openblock/src/myblock/myblock/settings.py /home/openblock/openblock/src/myblock/myblock/settings_orig.py
@@ -78,9 +78,18 @@ update blocks set "right_state" = 'NC';
 update blocks set "lett_state" = 'NC';
 \q 
 
+#set openblock enviroment again
+sudo su - openblock
+cd /home/openblock/openblock
+source bin/activate
+export DJANGO_SETTINGS_MODULE=myblock.settings
 
-#this is the end of the startup\setup script thre are some manual steps using QGIS here.  
-#qgis should not be setup on amazon.
+#update blocks intersections etc
+populate_streets -v -v -v -v streets
+populate_streets -v -v -v -v block_intersections
+populate_streets -v -v -v -v intersections
 
 #update the wsgi script so everything is updated and starts with changes 
 touch /home/openblock/openblock/wsgi/myblock.wsgi
+
+#this is the end of the startup\setup script thre are some manual steps using QGIS here.  
