@@ -18,7 +18,6 @@ export DJANGO_SETTINGS_MODULE=myblock.settings
 #setup super username yes this not secure but its demo  in  production you would want to make it something other than password!
 django-admin.py createsuperuser
 password
-exit
 
 
 # we need to download city and county shapefiles
