@@ -1,23 +1,21 @@
 #!/bin/bash
 
-#get the opendata_workshop opendata files from git hub.
-#git clone https://github.com/davecoa/opendataday_workshop.git
-
-
-#replace the settings python script with the git hub copy the new python importer script from git hub repository
-sudo chmod 664 /home/openblock/openblock/src/myblock/myblock/settings.py
-sudo chmod 664 ~/opendataday_workshop/Import_blocks_opendataday.py
-sudo mv /home/openblock/openblock/src/myblock/myblock/settings.py /home/openblock/openblock/src/myblock/myblock/settings_orig.py
-sudo cp ~/opendataday_workshop/Import_blocks_opendataday.py /home/openblock/openblock/src/myblock/myblock/settings.py
-sudo chown openblock /home/openblock/openblock/src/myblock/myblock/settings.py
-
-sudo touch /home/openblock/openblock/wsgi/myblock.wsgi
-
 #start openblock enviroment
 sudo su - openblock
 cd /home/openblock/openblock
 source bin/activate
 export DJANGO_SETTINGS_MODULE=myblock.settings
+
+
+
+#replace the settings python script with the git hub copy the new python importer script from git hub repository
+chmod 664 /home/openblock/openblock/src/myblock/myblock/settings.py
+chmod 664 ~/opendataday_workshop/Import_blocks_opendataday.py
+mv /home/openblock/openblock/src/myblock/myblock/settings.py /home/openblock/openblock/src/myblock/myblock/settings_orig.py
+cp ~/opendataday_workshop/Import_blocks_opendataday.py /home/openblock/openblock/src/myblock/myblock/settings.py
+chown openblock /home/openblock/openblock/src/myblock/myblock/settings.py
+
+touch /home/openblock/openblock/wsgi/myblock.wsgi
 
 
 #setup super username yes this not secure but its demo  in  production you would want to make it something other than password!
