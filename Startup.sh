@@ -5,7 +5,7 @@ git clone https://github.com/davecoa/opendataday_workshop.git
 
 #replace the settings python script with the git hub copy the new python importer script from git hub repository
 sudo chmod 664 /home/openblock/openblock/src/myblock/myblock/settings.py
-sudo chmod 664 /home/openblock/openblock/src/myblock/myblock/settings_orig.py
+sudo chmod 664 ~/opendataday_workshop/Import_blocks_opendataday.py
 mv /home/openblock/openblock/src/myblock/myblock/settings.py /home/openblock/openblock/src/myblock/myblock/settings_orig.py
 cp ~/opendataday_workshop/Import_blocks_opendataday.py /home/openblock/openblock/src/myblock/myblock/settings.py
 
