@@ -16,11 +16,11 @@ sudo chmod 664 /home/openblock/openblock/src/myblock/myblock/settings.py
 sudo chown openblock:openblock /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/blockimport/esri/importers/blocks.py
 sudo chmod 664 /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/blockimport/esri/importers/blocks.py
 
-#start openblock enviroment
-sudo su - openblock
-cd /home/openblock/openblock
-source bin/activate
-export DJANGO_SETTINGS_MODULE=myblock.settings
+#start openblock enviroment this will have to be manually?
+#sudo su - openblock
+##cd /home/openblock/openblock
+#source bin/activate
+#xport DJANGO_SETTINGS_MODULE=myblock.settings
 
 touch /home/openblock/openblock/wsgi/myblock.wsgi
 
