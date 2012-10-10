@@ -59,10 +59,10 @@ update blocks set "lett_state" = 'NC';
 \q 
 
 #set openblock enviroment again
-sudo su - openblock
-cd /home/openblock/openblock
-source bin/activate
-export DJANGO_SETTINGS_MODULE=myblock.settings
+#sudo su - openblock
+#cd /home/openblock/openblock
+#source bin/activate
+#export DJANGO_SETTINGS_MODULE=myblock.settings
 
 #update blocks intersections etc
 populate_streets -v -v -v -v streets
