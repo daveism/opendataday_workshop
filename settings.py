@@ -22,7 +22,7 @@ DATABASES = {
     'default': {
         'NAME': 'openblock_myblock',
         'USER': 'openblock',
-        'PASSWORD': 'openblock',
+        'PASSWORD': '',
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'OPTIONS': {},
         'HOST': '',
