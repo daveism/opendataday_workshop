@@ -1,10 +1,6 @@
 #!/bin/bash
 
-#start openblock enviroment
-sudo su - openblock
-cd /home/openblock/openblock
-source bin/activate
-export DJANGO_SETTINGS_MODULE=myblock.settings
+
 
 
 
@@ -18,5 +14,11 @@ sudo cp ~/opendataday_workshop/Import_blocks_opendataday.py /home/openblock/open
 sudo chown openblock:www-data /home/openblock/openblock/src/myblock/myblock/settings.py
 sudo chown openblock:www-data /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/blockimport/esri/importers/blocks.py
 
-sudo touch /home/openblock/openblock/wsgi/myblock.wsgi
+#start openblock enviroment
+sudo su - openblock
+cd /home/openblock/openblock
+source bin/activate
+export DJANGO_SETTINGS_MODULE=myblock.settings
+
+touch /home/openblock/openblock/wsgi/myblock.wsgi
 
