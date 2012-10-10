@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #get the opendata_workshop opendata files from git hub.
-#git clone https://github.com/davecoa/opendataday_workshop.git
+git clone https://github.com/davecoa/opendataday_workshop.git
 
 #replace the settings python script with the git hub copy the new python importer script from git hub repository 
 mv /home/openblock/openblock/src/myblock/myblock/settings.py /home/openblock/openblock/src/myblock/myblock/settings_orig.py
