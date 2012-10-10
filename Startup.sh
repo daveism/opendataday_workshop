@@ -10,7 +10,7 @@ sudo chmod 664 ~/opendataday_workshop/Import_blocks_opendataday.py
 sudo mv /home/openblock/openblock/src/myblock/myblock/settings.py /home/openblock/openblock/src/myblock/myblock/settings_orig.py
 sudo cp ~/opendataday_workshop/Import_blocks_opendataday.py /home/openblock/openblock/src/myblock/myblock/settings.py
 
-touch /home/openblock/openblock/wsgi/myblock.wsgi
+sudo touch /home/openblock/openblock/wsgi/myblock.wsgi
 
 #start openblock enviroment
 sudo su - openblock
@@ -93,7 +93,7 @@ populate_streets -v -v -v -v block_intersections
 populate_streets -v -v -v -v intersections
 
 #update the wsgi script so everything is updated and starts with changes 
-touch /home/openblock/openblock/wsgi/myblock.wsgi
+sudo touch /home/openblock/openblock/wsgi/myblock.wsgi
 
 exit
 
