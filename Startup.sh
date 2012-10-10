@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#get the opendata_workshop opendata files from git hub
+#get the opendata_workshop opendata files from git hub.
 #git clone https://github.com/davecoa/opendataday_workshop.git
 
 #replace the settings python script with the git hub copy the new python importer script from git hub repository 
