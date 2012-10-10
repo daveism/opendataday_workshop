@@ -139,5 +139,4 @@ CACHES = {
 if DEBUG:
     for _name in required_settings:
         if not _name in globals():
-            raise NameError("Required setting %r was not defined in settings.py or settings_default.py" % _name)
-u
+            raise NameError("Required setting %r was not defined in settings.py or settings_default.py" % _name);
