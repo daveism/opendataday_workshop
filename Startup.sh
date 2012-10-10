@@ -1,4 +1,4 @@
-x#!/bin/bash
+#!/bin/bash
 
 #get the opendata_workshop opendata files from git hub.
 git clone https://github.com/davecoa/opendataday_workshop.git
