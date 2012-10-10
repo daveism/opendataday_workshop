@@ -11,8 +11,10 @@ sudo mv /home/openblock/openblock/src/myblock/myblock/settings.py /home/openbloc
 sudo mv /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/blockimport/esri/importers/blocks.py /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/blockimport/esri/importers/blocks_orig.py
 sudo cp  ~/opendataday_workshop/settings.py /home/openblock/openblock/src/myblock/myblock/settings.py
 sudo cp ~/opendataday_workshop/Import_blocks_opendataday.py /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/blockimport/esri/importers/blocks.py
-sudo chown openblock:www-data /home/openblock/openblock/src/myblock/myblock/settings.py
-sudo chown openblock:www-data /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/blockimport/esri/importers/blocks.py
+sudo chown openblock:openblock /home/openblock/openblock/src/myblock/myblock/settings.py
+sudo chmod 664 /home/openblock/openblock/src/myblock/myblock/settings.py
+sudo chown openblock:openblock /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/blockimport/esri/importers/blocks.py
+sudo chmod 664 /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/blockimport/esri/importers/blocks.py
 
 #start openblock enviroment
 sudo su - openblock
