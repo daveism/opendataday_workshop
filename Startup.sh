@@ -1,4 +1,4 @@
-#!/bin/bash
+x#!/bin/bash
 
 #get the opendata_workshop opendata files from git hub.
 git clone https://github.com/davecoa/opendataday_workshop.git
@@ -19,7 +19,7 @@ export DJANGO_SETTINGS_MODULE=myblock.settings
 
 #setup super username yes this not secure but its demo  in  production you would want to make it something other than password!
 django-admin.py createsuperuser
-password
+exit
 
 
 # we need to download city and county shapefiles
