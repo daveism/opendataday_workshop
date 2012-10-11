@@ -1,15 +1,21 @@
-#for setting path for running scripts
-PATH=$PATH:~/opendataday_workshop
-export PATH
+#SELECT ONLY APD. MAYBE ONLY PUT APD ON LINE
+#QIGIS AND ADD LAT LONG FIELDS.  ADD TITLE.  ADD LOCATION_NAME  CALC TITLE FROM NAME
+lat = $y
+long=$x
+title=offense
+select thedate like '2011/%'
+only udpate selected records
+item_date=replace("thedate",'2011/','')||'/2011'
 
-#start openblock enviroment this will have to be manual or cut and paste
-sudo su - openblock
-cd /home/openblock/openblock
-source bin/activate
-export DJANGO_SETTINGS_MODULE=myblock.settings
+item_date=replace("thedate",'2011/','')||'/2011'
 
-#for setting up user
-django-admin.py createsuperuser
-
-#start load streets from ubunbtu user home when logged in as openblock
-/home/ubuntu/opendataday_workshop/LoadStreets.Sh
+casenumber || '-' || severity | | '-' || "offense" || '-' || "address"
+then address to locname
+delete leading fields leaving 
+export csv
+seee http://openblockproject.org/docs/packages/ebdata.html for details
+copy  csv to file with mapname
+dlete all date leaving heading
+title,item_date,lat,long,desc,locname
+add line
+title,item_date,lat,long,description,location_name
