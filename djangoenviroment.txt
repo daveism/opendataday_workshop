@@ -11,3 +11,5 @@ export DJANGO_SETTINGS_MODULE=myblock.settings
 #for setting up user
 django-admin.py createsuperuser
 
+#start load streets from ubunbtu user home when logged in as openblock
+/home/ubuntu/opendataday_workshop/LoadStreets.Sh
