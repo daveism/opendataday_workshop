@@ -51,18 +51,18 @@ ogr2ogr  hold.shp  centerline.shp -sql "SELECT *  FROM  hold where fid > 0"
  python ~/opendataday_workshop/Import_blocks_opendataday.py centerline.shp  -v -c 'ASHE'
 
 #fix in sql
-psql -d openblock_myblock -U openblock
+psql -d openblock_myblock -U openblock << EOF
 delete from blocks where right_zip is null;
 delete from blocks where left_zip is null;
 update blocks set "right_state" = 'NC';
 update blocks set "lett_state" = 'NC';
-\q 
+EOF
 
 #set openblock enviroment again
-#sudo su - openblock
-#cd /home/openblock/openblock
-#source bin/activate
-#export DJANGO_SETTINGS_MODULE=myblock.settings
+sudo su - openblock
+cd /home/openblock/openblock
+source bin/activate
+export DJANGO_SETTINGS_MODULE=myblock.settings
 
 #update blocks intersections etc
 populate_streets -v -v -v -v streets
