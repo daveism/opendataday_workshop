@@ -5,6 +5,27 @@ Scope: Asheville
 slug:cities
 Is significant false - uchecked
 
+#open coa_city_jurisdictions in qis
+Select all area that are not buncombe county
+Dissolve all boundarioes.  Vector - GeoProcessing Tools - Dissolve.
+The input is coa_city_jurisdictions 
+the field is dissolve all
+output is city
+choose to add to toc
+#get rid of inside lines.  buffer by 1
+Dissolve all boundarioes.  Vector - GeoProcessing Tools - Buffer
+input city
+buffer distance 1
+output citybuffer
+choose to add to toc
+ add a field  name city charcter 15.  calc to 'ASHE' where etjc and city
+#reproject to 4326
+the layer - save as
+fornat esri shaepfile
+save as city_4326
+browse crs searcgh for wgs84 select it. and OK
+
+
 #Add a location type
 Name: Neighborhood
 Plural name: Neighborhoods
@@ -14,6 +35,7 @@ Is significant true - checked
 
 #add two schemas 
 crime locations
+
 development locations
 
 #SELECT ONLY APD. MAYBE ONLY PUT APD ON LINE
