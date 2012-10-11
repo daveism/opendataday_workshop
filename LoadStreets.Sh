@@ -2,7 +2,7 @@
 
 #need to send patch for the openblock python enviroment also.
 mv /home/openblock/openblock/lib/python2.7/site-packages/django/contrib/gis/db/backends/postgis/adapter.py  /home/openblock/openblock/lib/python2.7/site-packages/django/contrib/gis/db/backends/postgis/adapter_orig.py
-cp ~/opendataday_workshop/adapter.py  /home/openblock/openblock/lib/python2.7/site-packages/django/contrib/gis/db/backends/postgis/adapter.py 
+cp /home/ubuntu/opendataday_workshop/adapter.py  /home/openblock/openblock/lib/python2.7/site-packages/django/contrib/gis/db/backends/postgis/adapter.py 
 chown openblock:openblock /home/openblock/openblock/lib/python2.7/site-packages/django/contrib/gis/db/backends/postgis/adapter.py 
 chmod 664 /home/openblock/openblock/lib/python2.7/site-packages/django/contrib/gis/db/backends/postgis/adapter.py 
 
