@@ -19,6 +19,7 @@ buffer distance 1
 output citybuffer
 choose to add to toc
  add a field  name city charcter 15.  calc to 'ASHE' where etjc and city
+calc cityname = "ASHEVILLE"
 #reproject to 4326
 the layer - save as
 fornat esri shaepfile
