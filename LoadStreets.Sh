@@ -41,7 +41,7 @@ ogr2ogr   -f "ESRI Shapefile" -t_srs "EPSG:4326"  coa_development_locations_view
 ogr2ogr   centerline_4326_a.shp centerline_4326.shp  -sql "SELECT *,CAST(STREET_POS as character(2)) as SPOS, CAST(STREET_PRE as character(2)   ) as PDIR,CAST(RIGHT_FROM as character(6)) as RFROM,CAST(RIGHT_TO_A as character(6)) as RTO,CAST(LEFT_FROM_  as character(6))as LFROM,  CAST(LEFT_TO_AD as character(6)) as LTO,cast(LCOMMCODE as character(2)) as STATE_R,cast(LCOMMCODE as character(2)) as STATE_L,LCOMMCODE,CAST(ROAD_CLASS as character(15))  as FCC FROM centerline_4326"  
 ogr2ogr   centerline_4326_b.shp centerline_4326_a.shp  -sql "SELECT *  FROM  centerline_4326_a where RIGHT_FROM >0 and  LEFT_FROM_  > 0  and  RIGHT_TO_A > 0  and LEFT_TO_AD > 0"
 ogr2ogr   centerline_4326_c.shp centerline_4326_b.shp  -sql "SELECT *  FROM  centerline_4326_b where LZIP=28801 or RZIP=28801"
-ogr2ogr   centerline_4326_c.shp hold.shp  -sql "SELECT *  FROM  centerline_4326_c where fid > 0"
+ogr2ogr   hold.shp centerline_4326_c.shp   -sql "SELECT *  FROM  centerline_4326_c where fid > 0"
 
 #remove old files
 rm -f centerline*
