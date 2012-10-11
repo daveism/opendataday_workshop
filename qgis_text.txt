@@ -26,7 +26,9 @@ fornat esri shaepfile
 save as city_4326
 browse crs searcgh for wgs84 select it. and OK
 
-
+add location by add shapefile
+have to zip 
+zip -r coa_bnd.zip city_4326*
 
 #Add a location type
 Name: Neighborhood
@@ -35,9 +37,15 @@ Scope:Asheville
 slug:neighborhoods
 Is significant true - checked
 
-add location by add shapefile
-have to zip 
-zip -r coa_bnd.zip city_4326*
+
+#open coa_neighborhoods in qis
+#reproject to 4326
+the layer - save as
+fornat esri shaepfile
+save as coa_neighborhoods_4326
+browse crs searcgh for wgs84 select it. and OK
+
+zip -r coa_neighborhoods.zip coa_neighborhoods_4326*
 
 #add two schemas 
 crime locations
