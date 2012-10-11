@@ -44,19 +44,19 @@ ogr2ogr   centerline_4326_c.shp centerline_4326_b.shp  -sql "SELECT *  FROM  cen
 ogr2ogr   hold.shp centerline_4326_c.shp   -sql "SELECT *  FROM  centerline_4326_c where fid > 0"
 
 #remove old files
-rm -f centerline*
-ogr2ogr  hold.shp  centerline.shp -sql "SELECT *  FROM  hold where fid > 0"
+#rm -f centerline*
+#ogr2ogr  hold.shp  centerline.shp -sql "SELECT *  FROM  hold where fid > 0"
 
 #run the custom import for buncoombe county data
- python ~/opendataday_workshop/Import_blocks_opendataday.py centerline.shp  -v -c 'ASHE'
+ #python ~/opendataday_workshop/Import_blocks_opendataday.py centerline.shp  -v -c 'ASHE'
 
-#fix in sql
-psql -d openblock_myblock -U openblock << EOF
-delete from blocks where right_zip is null;
-delete from blocks where left_zip is null;
-update blocks set "right_state" = 'NC';
-update blocks set "left_state" = 'NC';
-EOF
+##fix in sql
+#psql -d openblock_myblock -U openblock << EOF
+#delete from blocks where right_zip is null;
+#delete from blocks where left_zip is null;
+#update blocks set "right_state" = 'NC';
+#update blocks set "left_state" = 'NC';
+#EOF
 
 #set openblock enviroment again
 #sudo su - openblock
@@ -65,9 +65,9 @@ EOF
 #export DJANGO_SETTINGS_MODULE=myblock.settings
 
 #update blocks intersections etc
-populate_streets -v -v -v -v streets
-populate_streets -v -v -v -v block_intersections
-populate_streets -v -v -v -v intersections
+#populate_streets -v -v -v -v streets
+#populate_streets -v -v -v -v block_intersections
+#populate_streets -v -v -v -v intersections
 
 
 
