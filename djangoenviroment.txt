@@ -1,3 +1,4 @@
+export PATH = "$PATH:~/opendataday_workshop"
 
 #start openblock enviroment this will have to be manual or cut and paste
 sudo su - openblock
