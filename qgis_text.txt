@@ -1,11 +1,18 @@
 #Add a location type
+Name: City
+Plural name: cities
+Scope: Asheville
+slug:cities
+Is significant false - uchecked
+
+#Add a location type
 Name: Neighborhood
 Plural name: Neighborhoods
 Scope:Asheville
 slug:neighborhoods
 Is significant true - checked
 
-#add two scheams 
+#add two schemas 
 crime locations
 development locations
 
