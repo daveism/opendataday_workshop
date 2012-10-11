@@ -45,7 +45,7 @@ ogr2ogr   hold.shp centerline_4326_c.shp   -sql "SELECT *  FROM  centerline_4326
 
 #remove old files
 #rm -f centerline*
-#ogr2ogr  hold.shp  centerline.shp -sql "SELECT *  FROM  hold where fid > 0"
+ogr2ogr    centerline.shp hold.shp -sql "SELECT *  FROM  hold where fid > 0"
 
 #run the custom import for buncoombe county data
  #python ~/opendataday_workshop/Import_blocks_opendataday.py centerline.shp  -v -c 'ASHE'
