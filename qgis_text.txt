@@ -45,10 +45,28 @@ fornat esri shaepfile
 save as coa_neighborhoods_4326
 browse crs searcgh for wgs84 select it. and OK
 
-zip -r coa_neighborhoods.zip coa_neighborhoods_4326*
+zip -r coa_neighborhoods.zip coa_asheville_neighborhoods_4326*
 
 #add two schemas 
-crime locations
+Name: APD Crime
+Pluaral name:APD Crimes
+articale an
+slug apd-crimes
+mindate 1970-01-01
+last update today	
+date name date
+plurarl dates
+importance 500
+checked
+	is public
+  	can collapse
+	has newsitem detail	
+	allow comments
+	allow flagging
+	allow charting
+	use attribure lust	
+	number in view 25
+	map color #8B0000
 
 development locations
 
