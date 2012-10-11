@@ -25,7 +25,7 @@ unzip  streets.zip
 ##next open block likes data in different projections.
 #like everything in data and IT there 100 ways to do the samething this is one.
 # we need to get gdal first. GDAL is an open source command line program to translate spatuial information www.gdal.org
-sudo apt-get install gdal-bin
+#sudo apt-get install gdal-bin
 
 
 #gdal includes a executable named ogr2ogr it can do some basic vector data aka shapefile modifcations
