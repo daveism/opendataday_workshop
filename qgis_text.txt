@@ -26,12 +26,17 @@ save as city_4326
 browse crs searcgh for wgs84 select it. and OK
 
 
+
 #Add a location type
 Name: Neighborhood
 Plural name: Neighborhoods
 Scope:Asheville
 slug:neighborhoods
 Is significant true - checked
+
+add location by add shapefile
+have to zip 
+zip -r coa_bnd.zip city_4326*
 
 #add two schemas 
 crime locations
