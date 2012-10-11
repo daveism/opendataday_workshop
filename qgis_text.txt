@@ -68,26 +68,47 @@ checked
 	number in view 25
 	map color #8B0000
 
-development locations
 
-#SELECT ONLY APD. MAYBE ONLY PUT APD ON LINE
+#open qgis
+#SELECT ONLY BCsd
+open attribute table 
+sql where clause
+agency = 'BCSD'
+ok
+delete
+save
+
+
+
+then select the crimes in the far left the have a wring coordinate and are not usefull
+
+save as apd_crime_4326
+
+open apd_crime_4326
 #QIGIS AND ADD LAT LONG FIELDS.  ADD TITLE.  ADD LOCATION_NAME  CALC TITLE FROM NAME
-lat = $y
-long=$x
+add fields
+lat = $y (decimal 12,10)
+long=$x (decimal 12,10)
 title=offense
 select thedate like '2011/%'
 only udpate selected records
 item_date=replace("thedate",'2011/','')||'/2011'
-
-item_date=replace("thedate",'2011/','')||'/2011'
-
-casenumber || '-' || severity | | '-' || "offense" || '-' || "address"
+invert the select
+item_date=replace("thedate",'2012/','')||'/2012'
+add field desc
+"casenumber" | |'-' || "severity"  ||  '-' || "offense"  || '-' || "address"
 then address to locname
+save stop editing
+clear selected unselect all
+save as
+comma seperated value
+apd_crime.csv
+
+
 delete leading fields leaving 
 export csv
 seee http://openblockproject.org/docs/packages/ebdata.html for details
-copy  csv to file with mapname
-dlete all date leaving heading
-title,item_date,lat,long,desc,locname
-add line
-title,item_date,lat,long,description,location_name
+then import newsitem from spreadsheet choose csv file created
+se mapping_template
+
+development locations
