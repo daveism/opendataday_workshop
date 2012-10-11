@@ -7,7 +7,8 @@
 sudo apt-get install gdal-bin
 
 #for setting path for running scripts
-export PATH = "$PATH:~/opendataday_workshop"
+PATH=$PATH:~/opendataday_workshop
+export PATH
 
 
 
