@@ -48,7 +48,7 @@ rm -f centerline*
 ogr2ogr    centerline.shp hold.shp -sql "SELECT *  FROM  hold where fid > 0"
 
 #run the custom import for buncoombe county data
-python ~/opendataday_workshop/Import_blocks_opendataday.py centerline.shp  -v -c 'ASHE'
+python /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/blockimport/esri/importers/blocks.py centerline.shp  -v -c 'ASHE'
 
 ##fix in sql
 #psql -d openblock_myblock -U openblock << EOF
