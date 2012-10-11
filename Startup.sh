@@ -26,5 +26,5 @@ sudo chmod 664 /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/block
 #source bin/activate
 #xport DJANGO_SETTINGS_MODULE=myblock.settings
 
-touch /home/openblock/openblock/wsgi/myblock.wsgi
+sudo touch /home/openblock/openblock/wsgi/myblock.wsgi
 
