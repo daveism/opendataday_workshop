@@ -1,3 +1,6 @@
+#for setting path for running scripts
+PATH=$PATH:~/opendataday_workshop
+export PATH
 
 #start openblock enviroment this will have to be manual or cut and paste
 sudo su - openblock
