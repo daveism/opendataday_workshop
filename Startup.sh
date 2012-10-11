@@ -6,6 +6,9 @@
 # we need to get gdal first. GDAL is an open source command line program to translate spatuial information www.gdal.org
 sudo apt-get install gdal-bin
 
+#for setting path for running scripts
+export PATH = "$PATH:~/opendataday_workshop"
+
 
 
 #replace the settings python script with the git hub copy the new python importer script from git hub repository
