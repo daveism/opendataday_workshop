@@ -55,7 +55,7 @@ psql -d openblock_myblock -U openblock << EOF
 delete from blocks where right_zip is null;
 delete from blocks where left_zip is null;
 update blocks set "right_state" = 'NC';
-update blocks set "lett_state" = 'NC';
+update blocks set "left_state" = 'NC';
 EOF
 
 #set openblock enviroment again
