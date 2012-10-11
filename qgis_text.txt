@@ -1,3 +1,14 @@
+#Add a location type
+Name: Neighborhood
+Plural name: Neighborhoods
+Scope:Asheville
+slug:neighborhoods
+Is significant true - checked
+
+#add two scheams 
+crime locations
+development locations
+
 #SELECT ONLY APD. MAYBE ONLY PUT APD ON LINE
 #QIGIS AND ADD LAT LONG FIELDS.  ADD TITLE.  ADD LOCATION_NAME  CALC TITLE FROM NAME
 lat = $y
