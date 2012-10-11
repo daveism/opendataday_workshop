@@ -109,6 +109,63 @@ delete leading fields leaving
 export csv
 seee http://openblockproject.org/docs/packages/ebdata.html for details
 then import newsitem from spreadsheet choose csv file created
-se mapping_template
+use mapping_template.csv
 
 development locations
+
+Name: Current Development Location
+Pluaral name:Current Development Locations
+articale a
+slug current-development-locations
+mindate 1970-01-01
+last update today	
+date name date
+plurarl dates
+importance 250
+checked
+	is public
+  	can collapse
+	has newsitem detail	
+	allow comments
+	allow flagging
+	allow charting
+	use attribure lust	
+	number in view 25
+	map color #8B0000
+
+
+
+#open qgis
+add coa_development_locations_view.shp
+toggle editing
+then select the crimes in the far left the have a wring coordinate and are not usefull
+save
+toggle editing
+
+#reproject to 4326
+the layer - save as
+fornat esri shaepfile
+save as development_4326
+browse crs searcgh for wgs84 select it. and OK
+
+
+add the development_4326 in qgis
+#QIGIS AND ADD LAT LONG FIELDS.  ADD TITLE.  ADD LOCATION_NAME  CALC TITLE FROM NAME
+
+add fields
+lat = $y (decimal 12,10)
+long=$x (decimal 12,10)
+title=name
+select thedate like '2011/%'
+only udpate selected records
+item_date=replace("startate",'2011/','')||'/2011'
+invert the select
+item_date=replace("startdate",'2012/','')||'/2012'
+add field desc
+"label" | |'-' || "project_id"  ||  '-' || "name"   ||  '-' || "status"
+then label to locname
+save stop editing
+clear selected unselect all
+save as
+comma seperated value
+apd_crime.csv
