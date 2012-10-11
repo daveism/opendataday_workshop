@@ -39,6 +39,12 @@ populate_streets -v -v -v -v streets
 populate_streets -v -v -v -v block_intersections
 populate_streets -v -v -v -v intersections
 
-
+##fix in sql after import
+psql -d openblock_myblock -U openblock << EOF
+update blocks set left_city = 'ASHEVILLE' where left_city = 'ASHE';
+update blocks set right_city = 'ASHEVILLE' where right_city = 'ASHE';
+update streets set city = 'ASHEVILLE' where city = 'ASHE';
+update intersections set city = 'ASHEVILLE' where city = 'ASHE';
+EOF
 
 #this is the end of the startup\setup script thre are some manual steps using QGIS here.  
