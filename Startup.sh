@@ -1,6 +1,10 @@
 #!/bin/bash
 
 
+##next open block likes data in different projections.
+#like everything in data and IT there 100 ways to do the samething this is one.
+# we need to get gdal first. GDAL is an open source command line program to translate spatuial information www.gdal.org
+sudo apt-get install gdal-bin
 
 
 
