@@ -44,7 +44,7 @@ ogr2ogr   centerline_4326_c.shp centerline_4326_b.shp  -sql "SELECT *  FROM  cen
 ogr2ogr   hold.shp centerline_4326_c.shp   -sql "SELECT *  FROM  centerline_4326_c where fid > 0"
 
 #remove old files
-#rm -f centerline*
+rm -f centerline*
 ogr2ogr    centerline.shp hold.shp -sql "SELECT *  FROM  hold where fid > 0"
 
 #run the custom import for buncoombe county data
