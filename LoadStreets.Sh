@@ -56,12 +56,12 @@ ogr2ogr    centerline.shp hold.shp -sql "SELECT *  FROM  hold where fid > 0"
 python /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/blockimport/esri/importers/blocks.py centerline.shp  -v -c 'ASHE'
 
 ##fix in sql
-#psql -d openblock_myblock -U openblock << EOF
-#delete from blocks where right_zip is null;
-#delete from blocks where left_zip is null;
-#update blocks set "right_state" = 'NC';
-#update blocks set "left_state" = 'NC';
-#EOF
+psql -d openblock_myblock -U openblock << EOF
+delete from blocks where right_zip is null;
+delete from blocks where left_zip is null;
+update blocks set "right_state" = 'NC';
+update blocks set "left_state" = 'NC';
+EOF
 
 #set openblock enviroment again
 #sudo su - openblock
@@ -70,9 +70,9 @@ python /home/openblock/openblock/src/openblock/ebpub/ebpub/streets/blockimport/e
 #export DJANGO_SETTINGS_MODULE=myblock.settings
 
 #update blocks intersections etc
-#populate_streets -v -v -v -v streets
-#populate_streets -v -v -v -v block_intersections
-#populate_streets -v -v -v -v intersections
+populate_streets -v -v -v -v streets
+populate_streets -v -v -v -v block_intersections
+populate_streets -v -v -v -v intersections
 
 
 
