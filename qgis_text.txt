@@ -154,7 +154,7 @@ $update reason
 #select
 status=2
 $update reason 
-calc reason='Uknown'
+'Unknown'
 
 #select
 status=3
