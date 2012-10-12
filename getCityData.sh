@@ -24,7 +24,7 @@ sudo apt-get install gdal-bin
 
 #now we will add the fields to the shapefiles for calc values
 #city
-ogrinfo  coa_active_jurisdictions.shp -sql "ALTER TABLE  coa_active_jurisdictions add column thecityname character(150) "
+ogrinfo  coa_active_jurisdictions.shp -sql "ALTER TABLE  coa_active_jurisdictions add column acityname character(150) "
 ogr2ogr  test.shp coa_active_jurisdictions.shp -sql "SELECT * FROM coa_active_jurisdictions WHERE jurisdicti <> 'Buncombe County'"
 rm coa_active_jurisdictions*
 ogr2ogr  coa_active_jurisdictions.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
@@ -50,7 +50,7 @@ ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper
 
 #developemnt
 #eliminate x and y = 0
-ogr2ogr  coa_development_locations_view.shp test.shp -sql "SELECT * FROM coa_development_locations_view WHERE x>0 or y>0"
+ogr2ogr  test.shp coa_development_locations_view.shp -sql "SELECT * FROM coa_development_locations_view WHERE x>0 or y>0"
 rm coa_development_locations_view*
 ogr2ogr  coa_development_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
