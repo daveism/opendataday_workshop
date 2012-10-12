@@ -171,13 +171,13 @@ add fields
 lat = $y (decimal 12,10)
 long=$x (decimal 12,10)
 title=name
-select thedate like '2011/%'
+select startdate like '2011/%'
 only udpate selected records
-item_date=replace("startate",'2011/','')||'/2011'
+item_date=replace("startdatee",'2011/','')||'/2011'
 invert the select
 item_date=replace("startdate",'2012/','')||'/2012'
 add field desc
-"label" | |'-' || "project_id"  ||  '-' || "name"   ||  '-' || "status"
+"label" || '-' || "project_id"  ||  '-' || "name"   ||  '-' || "status"
 then label to locname
 save stop editing
 clear selected unselect all
