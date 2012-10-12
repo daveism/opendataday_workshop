@@ -5,28 +5,23 @@ Scope: Asheville
 slug:cities
 Is significant false - uchecked
 
-#open coa_city_jurisdictions in qis
+#open city_4326 in qis
 Dissolve all boundarioes.  Vector - GeoProcessing Tools - Dissolve.
 The input is coa_city_jurisdictions 
 the field is dissolve all
-output is city
+output is citydissolve_4326
 choose to add to toc
 #get rid of inside lines.  buffer by 1
 Dissolve all boundaries.  Vector - GeoProcessing Tools - Buffer
 input city
 buffer distance 1
-output citybuffer
+output citybuffer_4326
 choose to add to toc
 calc cityname = "ASHEVILLE"
-#reproject to 4326
-the layer - save as
-fornat esri shaepfile
-save as city_4326
-browse crs searcgh for wgs84 select it. and OK
 
 add location by add shapefile
 have to zip 
-zip -r coa_bnd.zip city_4326*
+zip -r coa_bnd.zip citybuffer_4326*
 
 #Add a location type
 Name: Neighborhood
@@ -36,14 +31,7 @@ slug:neighborhoods
 Is significant true - checked
 
 
-#open coa_neighborhoods in qis
-#reproject to 4326
-the layer - save as
-fornat esri shaepfile
-save as coa_neighborhoods_4326
-browse crs searcgh for wgs84 select it. and OK
 
-zip -r coa_neighborhoods.zip coa_asheville_neighborhoods_4326*
 
 #add two schemas 
 Name: APD Crime
@@ -68,11 +56,6 @@ checked
 
 
 #open qgis
-#SELECT ONLY BCsd
-open attribute table 
-browse crs searcgh for wgs84 select it. and OK
-save as apd_crime_4326
-
 open apd_crime_4326
 select
 thedate like '2011/%'
@@ -124,17 +107,9 @@ checked
 
 
 #open qgis
-add coa_development_locations_view.shp
+add coa_development_4326.shp
 toggle editing
 
-#reproject to 4326
-the layer - save as
-fornat esri shaepfile
-save as development_4326
-browse crs searcgh for wgs84 select it. and OK
-
-
-#add the development_4326 in qgis
 #Select
 startdate like '2009/%'
 #only udpate selected records update the field item_date
