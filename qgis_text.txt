@@ -96,7 +96,7 @@ item_date=replace("thedate",'2011/','')||'/2011'
 invert the select
 item_date=replace("thedate",'2012/','')||'/2012'
 add field desc
-"casenumber" | |'-' || "severity"  ||  '-' || "offense"  || '-' || "address"
+"casenumber" || '-' || "severity"  ||  '-' || "offense"  || '-' || "address"
 then address to locname
 add field reason
 select status=1
