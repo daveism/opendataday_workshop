@@ -5,7 +5,7 @@ Scope: Asheville
 slug:cities
 Is significant false - uchecked
 
-#open city_4326 in qis
+#open coa_city_4326 in qis
 Dissolve all boundarioes.  Vector - GeoProcessing Tools - Dissolve.
 The input is coa_city_jurisdictions 
 the field is dissolve all
