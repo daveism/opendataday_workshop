@@ -78,8 +78,8 @@ ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_l
 #gdal includes a executable named ogr2ogr it can do some basic vector data aka shapefile modifcations
 #we will use ogr2ogr to reproject the downloaded shapefiles from state plane to wgs84.
 #unmark this if you want I had issues with conversion...
-ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326"  coa_active_jurisdiction_4326.shp coa_active_jurisdictions.shp
-ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  coa_asheville_neighborhoods_4326.shp coa_asheville_neighborhoods.shp
-ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  coa_crime_mapper_locations_view_4326.shp coa_crime_mapper_locations_view.shp
-ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  coa_development_locations_view_4326.shp coa_development_locations_view.shp
+ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_city_4326.shp coa_active_jurisdictions.shp
+ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_hoods_4326.shp coa_asheville_neighborhoods.shp
+ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_crime_4326.shp coa_crime_mapper_locations_view.shp
+ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_development_4326.shp coa_development_locations_view.shp
 #this is the end of the startup\setup script thre are some manual steps using QGIS here.  
