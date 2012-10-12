@@ -25,21 +25,21 @@ sudo apt-get install gdal-bin
 #now we will add the fields to the shapefiles for calc values
 #city
 ogrinfo  coa_active_jurisdictions.shp -sql "ALTER TABLE  coa_active_jurisdictions add column thecityname character(150) "
-ogr2ogr  test.shp coa_active_jurisdictions.shp -sql "SELECT * FROM coa_active_jurisdictions WHERE jurisdicti <> 'Buncombe County'"
+ogr2ogr  coa_active_jurisdictions.shp test.shp -sql "SELECT * FROM coa_active_jurisdictions WHERE jurisdicti <> 'Buncombe County'"
 rm coa_active_jurisdictions*
-ogr2ogr  coa_active_jurisdictions.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
+ogr2ogr  test.shp coa_active_jurisdictions.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
 #crime
 #eliminate x and y = 0
-ogr2ogr  test.shp  crime_mapper_locations_view.shp -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE x>0 or y>0"
+ogr2ogr  crime_mapper_locations_view.shp  test.shp -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE x>0 or y>0"
 rm coa_crime_mapper_locations_view*
-ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
+ogr2ogr  test.shp coa_crime_mapper_locations_view.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
-ogr2ogr  test.shp  coa_crime_mapper_locations_view.shp -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE agency='APD'"
+ogr2ogr coa_crime_mapper_locations_view.shp  test.shp -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE agency='APD'"
 rm coa_crime_mapper_locations_view*
-ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
+ogr2ogr  test.shp coa_crime_mapper_locations_view.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
 ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column lat numeric(12,10)"
