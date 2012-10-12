@@ -29,7 +29,7 @@ ogrinfo  coa_active_jurisdictions.shp -sql "SELECT * FROM coa_active_jurisdictio
 
 #crime
 #elinate x and why = 0
-ogrinfo  coa_crime_mapper_locations_view.shp -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE x>0 and y>0"
+ogrinfo  coa_crime_mapper_locations_view.shp -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE x>0 or y>0"
 ogrinfo  coa_crime_mapper_locations_view.shp -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE agency='APD'"
 ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column lat numeric(12,10)"
 ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column long numeric(12,10)"
