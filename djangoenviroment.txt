@@ -18,3 +18,4 @@ export PATH
 #for setting up user
 django-admin.py createsuperuser
 
+touch /home/openblock/openblock/wsgi/myblock.wsgi
