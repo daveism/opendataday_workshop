@@ -11,7 +11,7 @@ The input is coa_city_jurisdictions
 the field is dissolve all
 output is coa_city_dissolve_4326
 choose to add to toc
-#get rid of inside lines.  buffer by 1
+#get rid of inside lines.  buffer by .001
 Dissolve all boundaries.  Vector - GeoProcessing Tools - Buffer
 input city
 buffer distance 1
