@@ -27,7 +27,7 @@ sudo apt-get install gdal-bin
 ogrinfo  coa_active_jurisdictions.shp -sql "ALTER TABLE  coa_active_jurisdictions add column thecityname character(150) "
 ogr2ogr  test.shp coa_active_jurisdictions.shp -sql "SELECT * FROM coa_active_jurisdictions WHERE jurisdicti <> 'Buncombe County'"
 rm coa_active_jurisdictions*
-ogr2ogr  coa_active_jurisdictions.shp test.shp  -sql "SELECT * FROM coa_active_jurisdictions WHERE fid>0"
+ogr2ogr  coa_active_jurisdictions.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
 #crime
