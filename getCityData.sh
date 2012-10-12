@@ -25,6 +25,7 @@ sudo apt-get install gdal-bin
 #now we will add the fields to the shapefiles for calc values
 #city
 ogrinfo  coa_active_jurisdictions.shp -sql "ALTER TABLE  coa_active_jurisdictions add column thecityname character(150) "
+ogrinfo  coa_active_jurisdictions.shp -sql "SELECT * FROM coa_active_jurisdictions WHERE jurisdicti <> 'Buncombe County'"
 
 #crime
 #elinate x and why = 0
