@@ -5,6 +5,8 @@ export PATH
 #fron opnblock su 
 PATH=$PATH:/home/ubuntu/opendataday_workshop
 export PATH
+#running loadstreets
+/home/ubuntu/opendataday_workshop LoadStreets.Sh
 
 #start openblock enviroment this will have to be manual or cut and paste
 sudo su - openblock
