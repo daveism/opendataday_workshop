@@ -34,12 +34,12 @@ rm test.*
 #eliminate x and y = 0
 ogr2ogr  test.shp  crime_mapper_locations_view.shp -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE x>0 or y>0"
 rm coa_crime_mapper_locations_view*
-ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE fid>0"
+ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
 ogr2ogr  test.shp  coa_crime_mapper_locations_view.shp -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE agency='APD'"
 rm coa_crime_mapper_locations_view*
-ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE fid>0"
+ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
 ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column lat numeric(12,10)"
@@ -52,7 +52,7 @@ ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper
 #eliminate x and y = 0
 ogr2ogr  test.shp coa_development_locations_view.shp -sql "SELECT * FROM coa_development_locations_view WHERE x>0 or y>0"
 rm coa_development_locations_view*
-ogr2ogr  coa_development_locations_view.shp test.shp  -sql "SELECT * FROM coa_development_locations_view WHERE fid>0"
+ogr2ogr  coa_development_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
 ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column lat numeric(12,10)"
