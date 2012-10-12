@@ -43,7 +43,7 @@ ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_l
 ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column y numeric(12,10)"
 ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column title character(150)"
 ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column item_date character(150)"
-ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column desc
+ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column desc character(150)"
 
 
 
