@@ -62,6 +62,7 @@ open apd_crime_4326
 lat = $y (decimal 12,10)
 long=$x (decimal 12,10)
 title=offense
+locname=address
 select
 thedate like '2011/%'
 only udpate selected records update the field item_date
@@ -119,6 +120,7 @@ toggle editing
 lat = $y (decimal 12,10)
 long=$x (decimal 12,10)
 title=name
+locname=label
 
 #Select
 startdate like '2009/%'
