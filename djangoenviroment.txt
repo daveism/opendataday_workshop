@@ -2,20 +2,19 @@
 PATH=$PATH:~/opendataday_workshop
 export PATH
 
-#fron opnblock su 
-PATH=$PATH:/home/ubuntu/opendataday_workshop
-export PATH
-#running loadstreets
-/home/ubuntu/opendataday_workshop LoadStreets.Sh
-
 #start openblock enviroment this will have to be manual or cut and paste
 sudo su - openblock
 cd /home/openblock/openblock
 source bin/activate
 export DJANGO_SETTINGS_MODULE=myblock.settings
 
-#for setting up user
-django-admin.py createsuperuser
+#fron opnblock su 
+PATH=$PATH:/home/ubuntu/opendataday_workshop
+export PATH
 
 #start load streets from ubunbtu user home when logged in as openblock
 /home/ubuntu/opendataday_workshop/LoadStreets.Sh
+
+#for setting up user
+django-admin.py createsuperuser
+
