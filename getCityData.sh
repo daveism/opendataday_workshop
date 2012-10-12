@@ -21,6 +21,17 @@ unzip coa_development_locations.zip
 #like everything in data and IT there 100 ways to do the samething this is one.
 # we need to get gdal first. GDAL is an open source command line program to translate spatuial information www.gdal.org
 sudo apt-get install gdal-bin
+sudo wget http://download.osgeo.org/proj/proj-4.8.0.tar.gz
+sudo wget http://download.osgeo.org/proj/proj-datumgrid-1.5.tar.gz
+tar xzf proj-4.8.0.tar.gz
+cd proj-4.8.0/nad
+tar xzf ../../proj-datumgrid-1.5.tar.gz
+cd ..
+./configure
+make
+sudo make install
+cd ..
+
 
 #now we will add the fields to the shapefiles for calc values
 #city
