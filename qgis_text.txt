@@ -57,6 +57,10 @@ checked
 
 #open qgis
 open apd_crime_4326
+#update
+lat = $y (decimal 12,10)
+long=$x (decimal 12,10)
+title=offense
 select
 thedate like '2011/%'
 only udpate selected records update the field item_date
@@ -109,6 +113,11 @@ checked
 #open qgis
 add coa_development_4326.shp
 toggle editing
+
+#update
+lat = $y (decimal 12,10)
+long=$x (decimal 12,10)
+title=name
 
 #Select
 startdate like '2009/%'
