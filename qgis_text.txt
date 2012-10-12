@@ -11,7 +11,7 @@ The input is coa_city_jurisdictions
 the field is dissolve all
 output is coa_city_dissolve_4326
 choose to add to toc
-#get rid of inside lines.  buffer by .001
+#get rid of inside lines.  buffer by .000001
 Dissolve all boundaries.  Vector - GeoProcessing Tools - Buffer
 input city
 buffer distance 1
@@ -21,7 +21,7 @@ calc cityname = "ASHEVILLE"
 
 add location by add shapefile
 have to zip 
-zip -r coa_bnd.zip citybuffer_4326*
+zip -r coa_bnd.zip coa_city_buffer_4326*
 
 #Add a location type
 Name: Neighborhood
