@@ -9,13 +9,13 @@ Is significant false - uchecked
 Dissolve all boundarioes.  Vector - GeoProcessing Tools - Dissolve.
 The input is coa_city_jurisdictions 
 the field is dissolve all
-output is citydissolve_4326
+output is coa_city_dissolve_4326
 choose to add to toc
 #get rid of inside lines.  buffer by 1
 Dissolve all boundaries.  Vector - GeoProcessing Tools - Buffer
 input city
 buffer distance 1
-output citybuffer_4326
+output coa_city_buffer_4326
 choose to add to toc
 calc cityname = "ASHEVILLE"
 
