@@ -6,19 +6,17 @@ slug:cities
 Is significant false - uchecked
 
 #open coa_city_jurisdictions in qis
-Select all area that are not buncombe county
 Dissolve all boundarioes.  Vector - GeoProcessing Tools - Dissolve.
 The input is coa_city_jurisdictions 
 the field is dissolve all
 output is city
 choose to add to toc
 #get rid of inside lines.  buffer by 1
-Dissolve all boundarioes.  Vector - GeoProcessing Tools - Buffer
+Dissolve all boundaries.  Vector - GeoProcessing Tools - Buffer
 input city
 buffer distance 1
 output citybuffer
 choose to add to toc
- add a field  name city charcter 15.  calc to 'ASHE' where etjc and city
 calc cityname = "ASHEVILLE"
 #reproject to 4326
 the layer - save as
@@ -72,30 +70,17 @@ checked
 #open qgis
 #SELECT ONLY BCsd
 open attribute table 
-sql where clause
-agency = 'BCSD'
-ok
-delete
-save
-
-
-
-then select the crimes in the far left the have a wring coordinate and are not usefull
-
+browse crs searcgh for wgs84 select it. and OK
 save as apd_crime_4326
 
 open apd_crime_4326
-#QIGIS AND ADD LAT LONG FIELDS.  ADD TITLE.  ADD LOCATION_NAME  CALC TITLE FROM NAME
-add fields
-lat = $y (decimal 12,10)
-long=$x (decimal 12,10)
-title=offense
-select thedate like '2011/%'
-only udpate selected records
+select
+thedate like '2011/%'
+only udpate selected records update the field item_date
 item_date=replace("thedate",'2011/','')||'/2011'
-invert the select
+thedate like '2012/%'
 item_date=replace("thedate",'2012/','')||'/2012'
-add field desc
+update the field desc
 "casenumber" || '-' || "severity"  ||  '-' || "offense"  || '-' || "address"
 then address to locname
 
@@ -141,9 +126,6 @@ checked
 #open qgis
 add coa_development_locations_view.shp
 toggle editing
-then select the crimes in the far left the have a wring coordinate and are not usefull
-save
-toggle editing
 
 #reproject to 4326
 the layer - save as
@@ -152,34 +134,61 @@ save as development_4326
 browse crs searcgh for wgs84 select it. and OK
 
 
-add the development_4326 in qgis
-#QIGIS AND ADD LAT LONG FIELDS.  ADD TITLE.  ADD LOCATION_NAME  CALC TITLE FROM NAME
+#add the development_4326 in qgis
+#Select
+startdate like '2009/%'
+#only udpate selected records update the field item_date
+replace("startdatee",'2009/','')||'/2009'
 
-add fields
-lat = $y (decimal 12,10)
-long=$x (decimal 12,10)
-title=name
-select startdate like '2011/%'
-only udpate selected records
-item_date=replace("startdatee",'2011/','')||'/2011'
-invert the select
-item_date=replace("startdate",'2012/','')||'/2012'
-add field desc
+startdate like '2010/%'
+#only udpate selected records update the field item_date
+replace("startdate",'2010/','')||'/2010'
+
+startdate like '2011/%'
+#only udpate selected records update the field item_date
+replace("startdatee",'2011/','')||'/2011'
+
+startdate like '2012/%'
+#only udpate selected records update the field item_date
+replace("startdate",'2012/','')||'/2012'
+
+#update field desc
 "label" || '-' || "project_id"  ||  '-' || "name"   ||  '-' || "status"
-then label to locname
-add field reason
-select status=1
-calc reason='Under Review'
-select status=2
+#update field locname
+label
+
+$update field reason 
+
+#select
+status=1
+$update reason 
+'Under Review'
+
+#select
+status=2
+$update reason 
 calc reason='Uknown'
-select status=3
-calc reason='Project Approved'
-select status=4
-calc reason='Denied'
-select status=5
-calc reason='Project Completed'
-select status=6
-calc reason='Application Withdrawn'
+
+#select
+status=3
+$update reason 
+'Project Approved'
+
+#select
+status=4
+$update reason 
+'Denied'
+
+#select
+status=5
+$update reason 
+'Project Completed'
+
+#select
+status=6
+$update reason 
+'Application Withdrawn'
+
 save stop editing
 clear selected unselect all
 save as
