@@ -31,7 +31,7 @@ cd ..
 make
 sudo make install
 cd ..
-
+sudo ln -s /usr/lib/libproj.so.0 /usr/lib/libproj.so
 
 #now we will add the fields to the shapefiles for calc values
 #city
