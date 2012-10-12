@@ -82,4 +82,8 @@ ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_city_43
 ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_hoods_4326.shp coa_asheville_neighborhoods.shp
 ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_crime_4326.shp coa_crime_mapper_locations_view.shp
 ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_development_4326.shp coa_development_locations_view.shp
+
+#zip neighborhoods for import.
+zip -r coa_hoods.zip coa_hoods_*
+
 #this is the end of the startup\setup script thre are some manual steps using QGIS here.  
