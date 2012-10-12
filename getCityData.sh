@@ -22,6 +22,30 @@ unzip coa_development_locations.zip
 # we need to get gdal first. GDAL is an open source command line program to translate spatuial information www.gdal.org
 sudo apt-get install gdal-bin
 
+#now we will add the fields to the shapefiles for calc values
+#city
+ogrinfo  coa_active_jurisdictions.shp -sql "ALTER TABLE  coa_active_jurisdictions add column cityname character(150) "
+
+#crime
+#elinate x and why = 0
+ogrinfo  coa_crime_mapper_locations_view.shp -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE x>0 and y>0"
+ogrinfo  coa_crime_mapper_locations_view.shp -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE agency='APD'"
+ogrinfo  coa_crime_mapper_locations_view.shp -sql ""ALTER TABLE  coa_crime_mapper_locations_view add column x numeric(12,10)"
+ogrinfo  coa_crime_mapper_locations_view.shp -sql ""ALTER TABLE  coa_crime_mapper_locations_view add column y numeric(12,10)"
+ogrinfo  coa_crime_mapper_locations_view.shp -sql ""ALTER TABLE  coa_crime_mapper_locations_view add column title character(150)"
+ogrinfo  coa_crime_mapper_locations_view.shp -sql ""ALTER TABLE  coa_crime_mapper_locations_view add column item_date character(150)"
+ogrinfo  coa_crime_mapper_locations_view.shp -sql ""ALTER TABLE  coa_crime_mapper_locations_view add column desc character(150)"
+
+#developemnt
+#elinate x and why = 0
+ogrinfo  coa_development_locations_view.shp -sql "SELECT * FROM coa_development_locations_view WHERE x>0 and y>0"
+ogrinfo  coa_development_locations_view.shp -sql ""ALTER TABLE  coa_development_locations_view add column x numeric(12,10)"
+ogrinfo  coa_development_locations_view.shp -sql ""ALTER TABLE  coa_development_locations_view add column y numeric(12,10)"
+ogrinfo  coa_development_locations_view.shp -sql ""ALTER TABLE  coa_development_locations_view add column title character(150)"
+ogrinfo  coa_development_locations_view.shp -sql ""ALTER TABLE  coa_development_locations_view add column item_date character(150)"
+ogrinfo  coa_development_locations_view.shp -sql ""ALTER TABLE  coa_development_locations_view add column desc
+
+
 
 #gdal includes a executable named ogr2ogr it can do some basic vector data aka shapefile modifcations
 #we will use ogr2ogr to reproject the downloaded shapefiles from state plane to wgs84.
