@@ -98,6 +98,21 @@ item_date=replace("thedate",'2012/','')||'/2012'
 add field desc
 "casenumber" | |'-' || "severity"  ||  '-' || "offense"  || '-' || "address"
 then address to locname
+add field reason
+select status=1
+calc reason='Under Review'
+select status=2
+calc reason='Uknown'
+select status=3
+calc reason='Project Approved'
+select status=4
+calc reason='Denied'
+select status=5
+calc reason='Project Completed'
+select status=6
+calc reason='Application Withdrawn'
+
+
 save stop editing
 clear selected unselect all
 save as
