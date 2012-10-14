@@ -93,8 +93,8 @@ rm coa_development_locations_view*
 ogr2ogr  coa_development_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
-ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column lat numeric(12,10)"
-ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column long numeric(12,10)"
+#ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column lat numeric(12,10)"
+#ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column long numeric(12,10)"
 ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column title character(150)"
 ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column item_date character(150)"
 ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column desc character(150)"
@@ -116,6 +116,11 @@ ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_develop
 ogr2ogr test.shp  coa_crime_4326.shp -sql "SELECT *, cast(substr(OGR_GEOM_WKT,27,17) as numeric(12,10)) as lat, cast(substr(OGR_GEOM_WKT,8,19) as numeric(12,10)) as long FROM coa_crime_4326 WHERE agency='APD'"
 rm coa_crime_4326*
 ogr2ogr  coa_crime_4326.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
+rm test.*
+
+ogr2ogr test.shp  coa_development_4326.shp -sql "SELECT *, cast(substr(OGR_GEOM_WKT,27,17) as numeric(12,10)) as lat, cast(substr(OGR_GEOM_WKT,8,19) as numeric(12,10)) as long FROM coa_development_4326"
+rm coa_development_4326*
+ogr2ogr  coa_development_4326.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
 
