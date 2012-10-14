@@ -52,12 +52,6 @@ ogr2ogr test.shp  coa_crime_mapper_locations_view.shp -sql "SELECT * FROM coa_cr
 rm coa_crime_mapper_locations_view*
 ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 
-
-ogr2ogr test.shp  coa_crime_mapper_locations_view.shp -sql "SELECT *, cast(substr(OGR_GEOM_WKT,27,17) as numeric(12,10)) as lat, cast(substr(OGR_GEOM_WKT,8,19) as numeric(12,10)) as long, FROM coa_crime_mapper_locations_view WHERE agency='APD'"
-rm coa_crime_mapper_locations_view*
-ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
-rm test.*
-
 ogr2ogr test.shp  coa_crime_mapper_locations_view.shp -sql "SELECT *, cast('offense' as character(150) )as 'title'   FROM coa_crime_mapper_locations_view WHERE agency='APD'"
 rm coa_crime_mapper_locations_view*
 ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
@@ -73,7 +67,10 @@ rm coa_crime_mapper_locations_view*
 ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
-
+ogr2ogr test.shp  coa_crime_mapper_locations_view.shp -sql "SELECT *,cast(concat(substr(cast('thedate' as character(150)),6,6),\"/\",substr(cast('thedate' as character(150)),1,4)) as charcter(150)) as item_date  FROM coa_crime_4326  "
+rm coa_crime_mapper_locations_view*
+ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
+rm test.*
 
 #ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column lat numeric(12,10)"
 #ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column long numeric(12,10)"
@@ -108,10 +105,12 @@ ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_crime_4
 ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_development_4326.shp coa_development_locations_view.shp
 
 #get lat long after wgs84 conversion
-ogr2ogr test.shp  coa_crime_4326.shp -sql "SELECT *,cast(concat(substr(cast('thedate' as character(150)),6,6),\"/\",substr(cast('thedate' as character(150)),1,4)) as charcter(150)) as item_date  FROM coa_crime_4326  "
-rm coa_crime_mapper_locations_view*
+
+ogr2ogr test.shp  coa_crime_4326.shp -sql "SELECT *, cast(substr(OGR_GEOM_WKT,27,17) as numeric(12,10)) as lat, cast(substr(OGR_GEOM_WKT,8,19) as numeric(12,10)) as long, FROM coa_crime_4326 WHERE agency='APD'"
+rm coa_crime_4326*
 ogr2ogr  coa_crime_4326.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
+
 
 #create crime csv
 ogrinfo -f "CSV" coacrime.csv coa_crime_4326.shp
