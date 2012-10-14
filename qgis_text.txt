@@ -18,7 +18,7 @@ buffer distance 1
 output coa_city_buffer_4326
 check dissolve buffer results.
 choose to add to toc
-calc cityname = "ASHEVILLE"
+
 
 add location by add shapefile
 have to zip 
