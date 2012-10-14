@@ -138,9 +138,9 @@ rm coa_development_locations_view*
 ogr2ogr  coa_development_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
-ogr2ogr test.shp  coa_crime_mapper_locations_view.shp -sql "SELECT *,cast(concat(substr(cast('thedate' as character(150)),6,6),\"/\",substr(cast('thedate' as character(150)),1,4)) as character(150)) as item_date  FROM coa_crime_mapper_locations_view  "
-rm coa_crime_mapper_locations_view*
-ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
+ogr2ogr test.shp  coa_development_locations_view.shp -sql "SELECT *,cast(concat(substr(cast('thedate' as character(150)),6,6),\"/\",substr(cast('thedate' as character(150)),1,4)) as character(150)) as item_date  FROM coa_development_locations_view  "
+rm coa_development_locations_view*
+ogr2ogr  coa_development_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
 #ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column lat numeric(12,10)"
