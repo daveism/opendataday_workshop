@@ -68,17 +68,23 @@ rm coa_crime_mapper_locations_view*
 ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
-
 ogr2ogr test.shp  coa_crime_mapper_locations_view.shp -sql "SELECT *, cast(concat('casenumber' , \"-\" , 'severity'  ,  \"-\" , 'offense'  , \"-\" , 'address') as character(254))  as 'desc' FROM coa_crime_mapper_locations_view WHERE agency='APD'"
 rm coa_crime_mapper_locations_view*
 ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
+ogr2ogr test.shp  coa_crime_4326.shp -sql "SELECT *,cast(concat(substr(cast('thedate' as character(150)),6,6),\"/\",substr(cast('thedate' as character(150)),1,4)) as charcter(150)) as item_date  FROM coa_crime_4326  "
+rm coa_crime_mapper_locations_view*
+ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
+rm test.*
+
+
+
 
 #ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column lat numeric(12,10)"
 #ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column long numeric(12,10)"
 #ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column title character(150)"
-ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column item_date character(150)"
+#ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column item_date character(150)"
 #ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column desc character(150)"
 #ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column locname character(150)"
 
