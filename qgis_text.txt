@@ -34,7 +34,7 @@ Scope:Asheville
 slug:neighborhoods
 Is significant true - checked
 
-
+add coa_hoods.zip
 
 
 #add two schemas 
