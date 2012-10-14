@@ -84,73 +84,7 @@ checked
 	map color #8B0000
 
 
-
-#open qgis
-add coa_development_4326.shp
-toggle editing
-
-#update
-lat = $y (decimal 12,10)
-long=$x (decimal 12,10)
-title=name
-locname=label
-
-#Select
-startdate like '2009/%'
-#only udpate selected records update the field item_date
-replace("startdatee",'2009/','')||'/2009'
-
-startdate like '2010/%'
-#only udpate selected records update the field item_date
-replace("startdate",'2010/','')||'/2010'
-
-startdate like '2011/%'
-#only udpate selected records update the field item_date
-replace("startdatee",'2011/','')||'/2011'
-
-startdate like '2012/%'
-#only udpate selected records update the field item_date
-replace("startdate",'2012/','')||'/2012'
-
-#update field desc
-"label" || '-' || "project_id"  ||  '-' || "name"   ||  '-' || "status"
-#update field locname
-label
-
-$update field reason 
-
-#select
-status=1
-$update reason 
-'Under Review'
-
-#select
-status=2
-$update reason 
-'Unknown'
-
-#select
-status=3
-$update reason 
-'Project Approved'
-
-#select
-status=4
-$update reason 
-'Denied'
-
-#select
-status=5
-$update reason 
-'Project Completed'
-
-#select
-status=6
-$update reason 
-'Application Withdrawn'
-
-save stop editing
-clear selected unselect all
-save as
-comma seperated value
-development.csv
+seee http://openblockproject.org/docs/packages/ebdata.html for details
+then import newsitem from spreadsheet choose csv file created
+use coa_development.csv
+use mapping_template.csv
