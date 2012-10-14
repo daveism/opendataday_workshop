@@ -13,8 +13,8 @@ output is coa_city_dissolve_4326
 choose to add to toc
 #get rid of inside lines.  buffer by .000001
 Dissolve all boundaries.  Vector - GeoProcessing Tools - Buffer
-input city
-buffer distance 1
+input coa_city_dissolve_4326
+buffer distance .000001
 output coa_city_buffer_4326
 check dissolve buffer results.
 choose to add to toc
