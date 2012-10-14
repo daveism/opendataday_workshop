@@ -56,36 +56,9 @@ checked
 	map color #4169E1
 
 
-#open qgis
-open coa_crime_4326
-#update
-lat = $y (decimal 12,10)
-long=$x (decimal 12,10)
-title=offense
-locname=address
-select
-thedate like '2011/%'
-only udpate selected records update the field item_date
-replace("thedate",'2011/','')||'/2011'
-thedate like '2012/%'
-replace("thedate",'2012/','')||'/2012'
-update the field desc
-"casenumber" || '-' || "severity"  ||  '-' || "offense"  || '-' || "address"
-then address to locname
-
-
-
-save stop editing
-clear selected unselect all
-save as
-comma seperated value
-apd_crime.csv
-
-
-delete leading fields leaving 
-export csv
 seee http://openblockproject.org/docs/packages/ebdata.html for details
 then import newsitem from spreadsheet choose csv file created
+use coa_crime.csv
 use mapping_template.csv
 
 development locations
