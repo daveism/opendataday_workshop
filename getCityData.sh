@@ -106,7 +106,7 @@ ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_develop
 
 #get lat long after wgs84 conversion
 
-ogr2ogr test.shp  coa_crime_4326.shp -sql "SELECT *, cast(substr(OGR_GEOM_WKT,27,17) as numeric(12,10)) as lat, cast(substr(OGR_GEOM_WKT,8,19) as numeric(12,10)) as long, FROM coa_crime_4326 WHERE agency='APD'"
+ogr2ogr test.shp  coa_crime_4326.shp -sql "SELECT *, cast(substr(OGR_GEOM_WKT,27,17) as numeric(12,10)) as lat, cast(substr(OGR_GEOM_WKT,8,19) as numeric(12,10)) as long FROM coa_crime_4326 WHERE agency='APD'"
 rm coa_crime_4326*
 ogr2ogr  coa_crime_4326.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
