@@ -64,6 +64,11 @@ rm coa_crime_mapper_locations_view*
 ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
+ogr2ogr test.shp  coa_crime_mapper_locations_view.shp -sql "SELECT *, cast('severity' as character(150) )as 'reason'   FROM coa_crime_mapper_locations_view WHERE agency='APD'"
+rm coa_crime_mapper_locations_view*
+ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
+rm test.*
+
 ogr2ogr test.shp  coa_crime_mapper_locations_view.shp -sql "SELECT *, cast('address' as character(150) )as 'locname'   FROM coa_crime_mapper_locations_view WHERE agency='APD'"
 rm coa_crime_mapper_locations_view*
 ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
