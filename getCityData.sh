@@ -37,7 +37,7 @@ sudo ln -s /usr/lib/libproj.so.0 /usr/lib/libproj.so
 #city
 #ogrinfo  coa_active_jurisdictions.shp -sql "ALTER TABLE  coa_active_jurisdictions add column acityname character(150) "
 
-ogr2ogr test.shp  coa_active_jurisdictions.shp -sql "SELECT *, cast(\"ASHEVILL\" as character(150) )as 'acityname'   FROM coa_active_jurisdictions"
+ogr2ogr test.shp  coa_active_jurisdictions.shp -sql "SELECT *, cast(\"ASHEVILLE\" as character(150) )as 'acityname'   FROM coa_active_jurisdictions"
 rm coa_active_jurisdictions*
 ogr2ogr  coa_active_jurisdictions.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
