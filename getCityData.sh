@@ -35,7 +35,13 @@ sudo ln -s /usr/lib/libproj.so.0 /usr/lib/libproj.so
 
 #now we will add the fields to the shapefiles for calc values
 #city
-ogrinfo  coa_active_jurisdictions.shp -sql "ALTER TABLE  coa_active_jurisdictions add column acityname character(150) "
+#ogrinfo  coa_active_jurisdictions.shp -sql "ALTER TABLE  coa_active_jurisdictions add column acityname character(150) "
+
+ogr2ogr test.shp  coa_active_jurisdictions.shp -sql "SELECT *, cast(\"ASHEVILL\" as character(150) )as 'acityname'   FROM coa_active_jurisdictions"
+rm coa_active_jurisdictions*
+ogr2ogr  coa_active_jurisdictions.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
+rm test.*
+
 ogr2ogr  test.shp coa_active_jurisdictions.shp -sql "SELECT * FROM coa_active_jurisdictions WHERE jurisdicti <> 'Buncombe County'"
 rm coa_active_jurisdictions*
 ogr2ogr  coa_active_jurisdictions.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
@@ -51,6 +57,7 @@ rm test.*
 ogr2ogr test.shp  coa_crime_mapper_locations_view.shp -sql "SELECT * FROM coa_crime_mapper_locations_view WHERE agency='APD'"
 rm coa_crime_mapper_locations_view*
 ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
+rm test.*
 
 ogr2ogr test.shp  coa_crime_mapper_locations_view.shp -sql "SELECT *, cast('offense' as character(150) )as 'title'   FROM coa_crime_mapper_locations_view WHERE agency='APD'"
 rm coa_crime_mapper_locations_view*
@@ -92,7 +99,7 @@ ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_l
 ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column item_date character(150)"
 ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column desc character(150)"
 ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column reason character(150)"
-ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column locname character(150)"
+ogrinfo  coa_development_locations_view.shp -sql "ALTER TABLE  coa_development_locations_view add column locname character(150)"
 
 
 
