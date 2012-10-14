@@ -123,6 +123,7 @@ rm test3.*
 rm test4.*
 rm test5.*
 rm test6.*
+rm coa_development_locations_view*
 ogr2ogr  coa_development_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
