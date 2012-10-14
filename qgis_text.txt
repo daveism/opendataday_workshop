@@ -57,7 +57,7 @@ checked
 
 
 #open qgis
-open apd_crime_4326
+open coa_crime_4326
 #update
 lat = $y (decimal 12,10)
 long=$x (decimal 12,10)
