@@ -73,12 +73,6 @@ rm coa_crime_mapper_locations_view*
 ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
-ogr2ogr test.shp  coa_crime_4326.shp -sql "SELECT *,cast(concat(substr(cast('thedate' as character(150)),6,6),\"/\",substr(cast('thedate' as character(150)),1,4)) as charcter(150)) as item_date  FROM coa_crime_4326  "
-rm coa_crime_mapper_locations_view*
-ogr2ogr  coa_crime_mapper_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
-rm test.*
-
-
 
 
 #ogrinfo  coa_crime_mapper_locations_view.shp -sql "ALTER TABLE  coa_crime_mapper_locations_view add column lat numeric(12,10)"
@@ -113,6 +107,14 @@ ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_hoods_4
 ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_crime_4326.shp coa_crime_mapper_locations_view.shp
 ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:2264"  -t_srs "EPSG:4326" coa_development_4326.shp coa_development_locations_view.shp
 
+#get lat long after wgs84 conversion
+ogr2ogr test.shp  coa_crime_4326.shp -sql "SELECT *,cast(concat(substr(cast('thedate' as character(150)),6,6),\"/\",substr(cast('thedate' as character(150)),1,4)) as charcter(150)) as item_date  FROM coa_crime_4326  "
+rm coa_crime_mapper_locations_view*
+ogr2ogr  coa_crime_4326.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
+rm test.*
+
+#create crime csv
+ogrinfo -f "CSV" coacrime.csv coa_crime_4326.shp
 #zip neighborhoods for import.
 zip -r coa_hoods.zip coa_hoods_*
 
