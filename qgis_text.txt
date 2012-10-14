@@ -18,7 +18,10 @@ buffer distance .000001
 output coa_city_buffer_4326
 check dissolve buffer results.
 choose to add to toc
-
+toggle editing
+open attribute table
+upate cityname
+'ASHEVILLE'
 
 add location by add shapefile
 have to zip 
