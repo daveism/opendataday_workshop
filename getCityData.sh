@@ -120,7 +120,8 @@ rm test.*
 
 
 #create crime csv
-ogrinfo -f "CSV" coacrime.csv coa_crime_4326.shp
+ogr2ogr -f "CSV" coacrime.csv coa_crime_4326.shp
+
 #zip neighborhoods for import.
 zip -r coa_hoods.zip coa_hoods_*
 
