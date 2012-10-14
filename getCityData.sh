@@ -103,6 +103,10 @@ rm coa_development_locations_view*
 ogr2ogr  coa_development_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
+ogr2ogr test.shp  coa_development_locations_view.shp -sql "SELECT *, cast('label' as character(150) )as 'locname'   FROM coa_development_locations_view"
+rm coa_development_locations_view*
+ogr2ogr  coa_development_locations_view.shp test1.shp  -sql "SELECT * FROM test WHERE fid>0"
+
 
 ogr2ogr test.shp  coa_development_locations_view.shp -sql "SELECT *, cast(concat('label' , \"-\" , 'project_id'  ,  \"-\" , 'name'  , \"-\" , 'reason') as character(254) )as 'desc'   FROM coa_development_locations_view"
 rm coa_development_locations_view*
