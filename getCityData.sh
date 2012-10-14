@@ -103,9 +103,28 @@ rm coa_development_locations_view*
 ogr2ogr  coa_development_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
 rm test.*
 
-ogr2ogr test.shp  coa_development_locations_view.shp -sql "SELECT *, cast('label' as character(150) )as 'locname'   FROM coa_development_locations_view"
-rm coa_development_locations_view*
-ogr2ogr  coa_development_locations_view.shp test1.shp  -sql "SELECT * FROM test WHERE fid>0"
+ogr2ogr test1.shp  coa_development_locations_view.shp -sql "SELECT *, cast(\"Under Review\" as character(150) )as 'reason'   FROM coa_development_locations_view where status=\"1\""
+ogr2ogr test2.shp  coa_development_locations_view.shp -sql "SELECT *, cast(\"Unknown\" as character(150) )as 'reason'   FROM coa_development_locations_view where status=\"2\""
+ogr2ogr test3.shp  coa_development_locations_view.shp -sql "SELECT *, cast(\"Project Approved\" as character(150) )as 'reason'   FROM coa_development_locations_view where status=\"3\""
+ogr2ogr test4.shp  coa_development_locations_view.shp -sql "SELECT *, cast(\"Denied\" as character(150) )as 'reason'   FROM coa_development_locations_view where status=\"4\""
+ogr2ogr test5.shp  coa_development_locations_view.shp -sql "SELECT *, cast(\"Project Completed\" as character(150) )as 'reason'   FROM coa_development_locations_view where status=\"5\""
+ogr2ogr test6.shp  coa_development_locations_view.shp -sql "SELECT *, cast(\"Application Withdrawn\" as character(150) )as 'reason'   FROM coa_development_locations_view where status=\"6\""
+
+
+ogr2ogr test.shp test1.shp
+ogr2ogr -update -append test.shp test2.shp -nln test
+ogr2ogr -update -append test.shp test3.shp -nln test
+ogr2ogr -update -append test.shp test4.shp -nln test
+ogr2ogr -update -append test.shp test5.shp -nln test
+ogr2ogr -update -append test.shp test6.shp -nln test
+rm test1.*
+rm test2.*
+rm test3.*
+rm test4.*
+rm test5.*
+rm test6.*
+ogr2ogr  coa_development_locations_view.shp test.shp  -sql "SELECT * FROM test WHERE fid>0"
+rm test.*
 
 
 ogr2ogr test.shp  coa_development_locations_view.shp -sql "SELECT *, cast(concat('label' , \"-\" , 'project_id'  ,  \"-\" , 'name'  , \"-\" , 'reason') as character(254) )as 'desc'   FROM coa_development_locations_view"
