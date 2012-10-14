@@ -175,7 +175,7 @@ rm test.*
 
 
 #create crime csv
-ogr2ogr -f "CSV" coacrime.csv coa_crime_4326.shp
+ogr2ogr -f "CSV" coa_crime.csv coa_crime_4326.shp
 
 #create development csv
 ogr2ogr -f "CSV" coa_development.csv coa_development_4326.shp
