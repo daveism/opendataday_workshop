@@ -7,7 +7,7 @@ Is significant false - uchecked
 
 #open coa_city_4326 in qis
 Dissolve all boundarioes.  Vector - GeoProcessing Tools - Dissolve.
-The input is coa_city_jurisdictions 
+The input is coa_city_4326 
 the field is dissolve all
 output is coa_city_dissolve_4326
 choose to add to toc
