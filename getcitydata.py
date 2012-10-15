@@ -70,6 +70,45 @@ def makeopenblockshapes(inshp,sql):
         deleteShapefile(outshp)
 
 
+def makeashape(inshp,outshp,sql):
+    pth = os.getcwd()
+    outshp = 'temp.shp'
+
+    #remove temp file in case it exsists
+    deleteShapefile(outshp)
+
+    #create temp shapefile with sql filter
+    cmd = pth + '\\ogr2ogr.exe ' + pth + '\\' + outshp +  ' ' + pth + '\\'+inshp+' -sql \"' + sql  +'\"'
+    print cmd
+    result = os.system(cmd)
+    print result
+    
+def copyshapefile(inshp,outshp):
+    pth = os.getcwd()
+
+
+    #remove temp file in case it exsists
+    deleteShapefile(outshp)
+
+    #create temp shapefile with sql filter
+    cmd = pth + '\\ogr2ogr.exe ' + outshp + ' ' + inshp
+    print cmd
+    result = os.system(cmd)
+    print result
+    return outshp
+
+
+def mergeshapefile(inshp,addshp):
+    pth = os.getcwd()
+
+
+    #create temp shapefile with sql filter
+    cmd = pth + '\\ogr2ogr.exe -update -append '+inshp+' '+addshp+' -nln test'
+    print cmd
+    result = os.system(cmd)
+    print result
+
+
 #sql=""
 #makeopenblock(shp,sql)
 
@@ -116,14 +155,72 @@ sql="SELECT *, cast('name' as character(150) )as 'title'   FROM "+name
 makeopenblockshapes(shp,sql)
 sql="SELECT *, cast('label' as character(150) )as 'locname'   FROM "+name
 makeopenblockshapes(shp,sql)
-##sql=""
-##makeopenblock(shp,sql)
-##sql=""
-##makeopenblock(shp,sql)
-##sql=""
-##makeopenblock(shp,sql)
-##sql=""
-##makeopenblock(shp,sql)
+sql="SELECT *, cast('label' as character(150) )as 'locname'   FROM coa_development_locations_view"
+makeopenblockshapes(shp,sql)
+specchar = '\\"-\\"'
+sql="SELECT *, cast(concat('label' ,"+specchar+" , 'project_id'  ,  "+specchar+" , 'name'  , "+specchar+", 'reason') as character(254) )as 'desc'   FROM coa_development_locations_view"
+makeopenblockshapes(shp,sql)
+specchar = '\\"/\\"'
+sql="SELECT *,cast(concat(substr(cast('startdate' as character(150)),6,6),\"/\",substr(cast('startdate' as character(150)),1,4)) as character(150)) as item_date  FROM coa_development_locations_view  "
+makeopenblockshapes(shp,sql)
+
+outshp1="test1.shp"
+escapedone='\\"Under Review\\"'
+escapedtwo='\\"1\\"'
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM coa_development_locations_view where status="+escapedtwo
+makeashape(shp,outshp1,sql)
+
+outshp2="test2.shp"
+escapedone='\\"Unknown\\"'
+escapedtwo='\\"2\\"'
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM coa_development_locations_view where status="+escapedtwo
+makeashape(shp,outshp2,sql)
+
+
+outshp3="test3.shp"
+escapedone='\\"Project Approved\\"'
+escapedtwo='\\"3\\"'
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM coa_development_locations_view where status="+escapedtwo
+makeashape(shp,outshp3,sql)
+
+
+outshp4="test4.shp"
+escapedone='\\"Denied\\"'
+escapedtwo='\\"4\\"'
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM coa_development_locations_view where status="+escapedtwo
+makeashape(shp,outshp4,sql)
+
+
+outshp5="test5.shp"
+escapedone='\\"Project Completed\\"'
+escapedtwo='\\"5\\"'
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM coa_development_locations_view where status="+escapedtwo
+makeashape(shp,outshp5,sql)
+
+
+outshp6="test6.shp"
+escapedone='\\"Application Withdrawn\\"'
+escapedtwo='\\"5\\"'
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM coa_development_locations_view where status="+escapedtwo
+makeashape(shp,outshp6,sql)
+
+ouputshp="temp.shp"
+copyshapefile(ouputshp,outshp1)
+mergeshapefile(ouputshp,outshp2)
+mergeshapefile(ouputshp,outshp3)
+mergeshapefile(ouputshp,outshp4)
+mergeshapefile(ouputshp,outshp5)
+mergeshapefile(ouputshp,outshp6)
+    
+deleteShapefile(outshp1)
+deleteShapefile(outshp2)
+deleteShapefile(outshp3)
+deleteShapefile(outshp4)
+deleteShapefile(outshp5)
+deleteShapefile(outshp6)
+deleteShapefile(ouputshp)
+
+
 ##sql=""
 ##makeopenblock(shp,sql)
 ##sql=""
