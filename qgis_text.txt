@@ -5,30 +5,27 @@ Scope: Asheville
 slug:cities
 Is significant false - uchecked
 
-#open coa_city_jurisdictions in qis
-Select all area that are not buncombe county
+#open coa_city_4326 in qis
 Dissolve all boundarioes.  Vector - GeoProcessing Tools - Dissolve.
-The input is coa_city_jurisdictions 
+The input is coa_city_4326 
 the field is dissolve all
-output is city
+output is coa_city_dissolve_4326
 choose to add to toc
-#get rid of inside lines.  buffer by 1
-Dissolve all boundarioes.  Vector - GeoProcessing Tools - Buffer
-input city
-buffer distance 1
-output citybuffer
+#get rid of inside lines.  buffer by .000001
+Dissolve all boundaries.  Vector - GeoProcessing Tools - Buffer
+input coa_city_dissolve_4326
+buffer distance .000001
+output coa_city_buffer_4326
+check dissolve buffer results.
 choose to add to toc
- add a field  name city charcter 15.  calc to 'ASHE' where etjc and city
-calc cityname = "ASHEVILLE"
-#reproject to 4326
-the layer - save as
-fornat esri shaepfile
-save as city_4326
-browse crs searcgh for wgs84 select it. and OK
+toggle editing
+open attribute table
+upate cityname
+'ASHEVILLE'
 
 add location by add shapefile
 have to zip 
-zip -r coa_bnd.zip city_4326*
+zip -r coa_bnd.zip coa_city_buffer_4326*
 
 #Add a location type
 Name: Neighborhood
@@ -37,15 +34,8 @@ Scope:Asheville
 slug:neighborhoods
 Is significant true - checked
 
+add coa_hoods.zip
 
-#open coa_neighborhoods in qis
-#reproject to 4326
-the layer - save as
-fornat esri shaepfile
-save as coa_neighborhoods_4326
-browse crs searcgh for wgs84 select it. and OK
-
-zip -r coa_neighborhoods.zip coa_asheville_neighborhoods_4326*
 
 #add two schemas 
 Name: APD Crime
@@ -69,46 +59,9 @@ checked
 	map color #8B0000
 
 
-#open qgis
-#SELECT ONLY BCsd
-open attribute table 
-sql where clause
-agency = 'BCSD'
-ok
-delete
-save
-
-
-
-then select the crimes in the far left the have a wring coordinate and are not usefull
-
-save as apd_crime_4326
-
-open apd_crime_4326
-#QIGIS AND ADD LAT LONG FIELDS.  ADD TITLE.  ADD LOCATION_NAME  CALC TITLE FROM NAME
-add fields
-lat = $y (decimal 12,10)
-long=$x (decimal 12,10)
-title=offense
-select thedate like '2011/%'
-only udpate selected records
-item_date=replace("thedate",'2011/','')||'/2011'
-invert the select
-item_date=replace("thedate",'2012/','')||'/2012'
-add field desc
-"casenumber" | |'-' || "severity"  ||  '-' || "offense"  || '-' || "address"
-then address to locname
-save stop editing
-clear selected unselect all
-save as
-comma seperated value
-apd_crime.csv
-
-
-delete leading fields leaving 
-export csv
 seee http://openblockproject.org/docs/packages/ebdata.html for details
 then import newsitem from spreadsheet choose csv file created
+use coa_crime.csv
 use mapping_template.csv
 
 development locations
@@ -131,41 +84,10 @@ checked
 	allow charting
 	use attribure lust	
 	number in view 25
-	map color #8B0000
+	map color #4169E1
 
 
-
-#open qgis
-add coa_development_locations_view.shp
-toggle editing
-then select the crimes in the far left the have a wring coordinate and are not usefull
-save
-toggle editing
-
-#reproject to 4326
-the layer - save as
-fornat esri shaepfile
-save as development_4326
-browse crs searcgh for wgs84 select it. and OK
-
-
-add the development_4326 in qgis
-#QIGIS AND ADD LAT LONG FIELDS.  ADD TITLE.  ADD LOCATION_NAME  CALC TITLE FROM NAME
-
-add fields
-lat = $y (decimal 12,10)
-long=$x (decimal 12,10)
-title=name
-select thedate like '2011/%'
-only udpate selected records
-item_date=replace("startate",'2011/','')||'/2011'
-invert the select
-item_date=replace("startdate",'2012/','')||'/2012'
-add field desc
-"label" | |'-' || "project_id"  ||  '-' || "name"   ||  '-' || "status"
-then label to locname
-save stop editing
-clear selected unselect all
-save as
-comma seperated value
-development.csv
+seee http://openblockproject.org/docs/packages/ebdata.html for details
+then import newsitem from spreadsheet choose csv file created
+use coa_development.csv
+use mapping_template.csv
