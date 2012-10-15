@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#using gdal on windows?  try copy and pasting all of this minus the apt and wgetlines.  get gdal for windows at http://fwtools.maptools.org/
 
 #get City Boundaries or jurisdictions
 wget "http://opendataserver.ashevillenc.gov/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=coagis:coa_active_jurisdictions&maxFeatures=1000000&outputFormat=SHAPE-ZIP"  -O coa_active_jurisdictions.zip
