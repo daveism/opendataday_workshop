@@ -4,7 +4,7 @@
 #For 64 bit python bindings windows http://vbkto.dyndns.org/sdk/PackageList.aspx?file=release-1500-x64-gdal-1-9-mapserver-6-0.zip for python bindings
 #For 32 bit python bindings windows  http://vbkto.dyndns.org/sdk/PackageList.aspx?file=release-1500-gdal-1-9-mapserver-6-0.zip
 # core componets 64 bit http://vbkto.dyndns.org/sdk/Download.aspx?file=release-1400-x64-gdal-1-9-mapserver-6-0\GDAL-1.9.2.win-amd64-py2.6.exe
-# 32 bit http://vbkto.dyndns.org/sdk/Download.aspx?file=release-1400-gdal-1-9-mapserver-6-0\gdal-19-1400-core.msi
+# 3core componets 2 bit http://vbkto.dyndns.org/sdk/Download.aspx?file=release-1400-gdal-1-9-mapserver-6-0\gdal-19-1400-core.msi
 
 #get City Boundaries or jurisdictions
 wget "http://opendataserver.ashevillenc.gov/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=coagis:coa_active_jurisdictions&maxFeatures=1000000&outputFormat=SHAPE-ZIP"  -O coa_active_jurisdictions.zip
