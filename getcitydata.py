@@ -4,6 +4,12 @@ import string
 import urllib2
 import os,zipfile
 from osgeo import osr
+#this script should be run in the same directory
+#as gdal is installed.
+#installed gdal from 32bit http://vbkto.dyndns.org/sdk/Download.aspx?file=release-1400-gdal-1-9-mapserver-6-0\gdal-19-1400-core.msi
+#or 64bit http://vbkto.dyndns.org/sdk/Download.aspx?file=release-1400-x64-gdal-1-9-mapserver-6-0\gdal-19-1400-x64-core.msi
+#I had to copy the GDAL directory to c: to avoid issues with the space in program files directory
+#this script is no yet ready for linux....
 
 def getShapeName(zipFilename):
     theShpName = zipFilename.replace('zip','shp')
@@ -48,7 +54,7 @@ def makeopenblockshapes(inshp,sql):
     deleteShapefile(outshp)
 
     #create temp shapefile with sql filter
-    cmd = pth + '\\ogr2ogr.exe ' + pth + '\\' + outshp +  ' ' + pth + '\\'+inshp+' -sql \"' + sql  +'\"'
+    cmd = 'ogr2ogr.exe ' + pth + '\\' + outshp +  ' ' + pth + '\\'+inshp+' -sql \"' + sql  +'\"'
     print cmd
     result = os.system(cmd)
     print result
@@ -60,7 +66,7 @@ def makeopenblockshapes(inshp,sql):
     #recreate orig
     theShpName = outshp.replace('.shp','')
     rsql = "SELECT * FROM "+theShpName+" WHERE fid>0"
-    cmd = pth + '\\ogr2ogr.exe ' + pth + '\\' + inshp +  ' ' + pth + '\\' + outshp + ' -sql \"' + rsql  +'\"'
+    cmd = 'ogr2ogr.exe ' + pth + '\\' + inshp +  ' ' + pth + '\\' + outshp + ' -sql \"' + rsql  +'\"'
     print cmd
     result = os.system(cmd)
     print result
@@ -78,7 +84,7 @@ def makeashape(inshp,outshp,sql):
     deleteShapefile(outshp)
 
     #create temp shapefile with sql filter
-    cmd = pth + '\\ogr2ogr.exe ' + pth + '\\' + outshp +  ' ' + pth + '\\'+inshp+' -sql \"' + sql  +'\"'
+    cmd = 'ogr2ogr.exe ' + pth + '\\' + outshp +  ' ' + pth + '\\'+inshp+' -sql \"' + sql  +'\"'
     print cmd
     result = os.system(cmd)
     print result
@@ -91,7 +97,7 @@ def copyshapefile(inshp,outshp):
     deleteShapefile(outshp)
 
     #create temp shapefile with sql filter
-    cmd = pth + '\\ogr2ogr.exe ' + outshp + ' ' + inshp
+    cmd = '\\ogr2ogr.exe ' + outshp + ' ' + inshp
     print cmd
     result = os.system(cmd)
     print result
@@ -103,7 +109,7 @@ def mergeshapefile(inshp,addshp):
 
 
     #create temp shapefile with sql filter
-    cmd = pth + '\\ogr2ogr.exe -update -append '+inshp+' '+addshp+' -nln test'
+    cmd = 'ogr2ogr.exe -update -append '+inshp+' '+addshp+' -nln test'
     print cmd
     result = os.system(cmd)
     print result
