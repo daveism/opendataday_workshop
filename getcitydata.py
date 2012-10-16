@@ -9,7 +9,7 @@ from osgeo import osr
 #installed gdal from 32bit http://vbkto.dyndns.org/sdk/Download.aspx?file=release-1400-gdal-1-9-mapserver-6-0\gdal-19-1400-core.msi
 #or 64bit http://vbkto.dyndns.org/sdk/Download.aspx?file=release-1400-x64-gdal-1-9-mapserver-6-0\gdal-19-1400-x64-core.msi
 #I had to copy the GDAL directory to c: to avoid issues with the space in program files directory
-#this script is not yet ready for linux....
+#this script is not yet ready for linux....and not fully tested....
 
 def getShapeName(zipFilename):
     theShpName = zipFilename.replace('zip','shp')
