@@ -94,7 +94,7 @@ def makecsv(csv,shp):
     #outshp = 'temp.shp'
 
     #remove temp file in case it exsists
-    deleteShapefile(csv+'.csv)
+    deleteShapefile(csv+'.csv')
 
     #create temp shapefile with sql filter
     cmd = 'ogr2ogr -f "CSV" '+csv+'.csv '+shp+'.shp'
@@ -129,11 +129,11 @@ def mergeshapefile(inshp,addshp):
     result = os.system(cmd)
     print result
     
-def transform(fromepsg,toepsg,toshp,outshp)
+def transform(fromepsg,toepsg,toshp,outshp):
     #remove temp file in case it exsists
-    deleteShapefile(inshp)
+    deleteShapefile(toshp)
 
-    cmd = 'ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:"'+fromepsg+'"  -t_srs "EPSG:'+toepsg+'" '+toshp+' '+outshp
+    cmd = 'ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:'+fromepsg+'"  -t_srs "EPSG:'+toepsg+'" '+toshp+' '+outshp
 
     print cmd
     result = os.system(cmd)
@@ -196,7 +196,7 @@ makeopenblockshapes(shp,sql)
 outshp1="test1.shp"
 escapedone='\\"Under Review\\"'
 escapedtwo='\\"1\\"'
-sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM "+name" where status="+escapedtwo
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM "+name+" where status="+escapedtwo
 makeashape(shp,outshp1,sql)
 
 outshp2="test2.shp"
@@ -270,11 +270,16 @@ makeopenblockshapes(shp,sql)
 makecsv('coa_crime','coa_crime_4326')
 makecsv('coa_development','coa_development_4326')
 
+pth = os.getcwd()
+myZipFile = zipfile.ZipFile(pth+"coa_hoods.zip", "w" )
+myZipFile.write("coa_hoods.shp", "coa_hoods.shp", zipfile.ZIP_DEFLATED)
+myZipFile.write("coa_hoods.cst", "coa_hoods.cst", zipfile.ZIP_DEFLATED)
+myZipFile.write("coa_hoods.dbf", "coa_hoods.dbf", zipfile.ZIP_DEFLATED)
+myZipFile.write("coa_hoods.shx", "coa_hoods.shx", zipfile.ZIP_DEFLATED)
+
 
 ##sql=""
 ##makeopenblock(shp,sql)
 ##sql=""
 ##makeopenblock(shp,sql)
-
-
 
