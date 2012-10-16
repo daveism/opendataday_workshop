@@ -271,11 +271,10 @@ makecsv('coa_crime','coa_crime_4326')
 makecsv('coa_development','coa_development_4326')
 
 pth = os.getcwd()
-myZipFile = zipfile.ZipFile(pth+"coa_hoods.zip", "w" )
-myZipFile.write("coa_hoods.shp", "coa_hoods.shp", zipfile.ZIP_DEFLATED)
-myZipFile.write("coa_hoods.cst", "coa_hoods.cst", zipfile.ZIP_DEFLATED)
-myZipFile.write("coa_hoods.dbf", "coa_hoods.dbf", zipfile.ZIP_DEFLATED)
-myZipFile.write("coa_hoods.shx", "coa_hoods.shx", zipfile.ZIP_DEFLATED)
+myZipFile = zipfile.ZipFile(pth+"/coa_hoods_4326.zip", "w" )
+myZipFile.write(pth+"/coa_hoods_4326.shp", "coa_hoods_4326.shp", zipfile.ZIP_DEFLATED)
+myZipFile.write(pth+"/coa_hoods_4326.dbf", "coa_hoods_4326.dbf", zipfile.ZIP_DEFLATED)
+myZipFile.write(pth+"/coa_hoods_4326.shx", "coa_hoods_4326.shx", zipfile.ZIP_DEFLATED)
 
 
 ##sql=""
