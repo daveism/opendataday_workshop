@@ -88,8 +88,23 @@ def makeashape(inshp,outshp,sql):
     print cmd
     result = os.system(cmd)
     print result
+
+def makecsv(csv,shp):
+    pth = os.getcwd()
+    #outshp = 'temp.shp'
+
+    #remove temp file in case it exsists
+    deleteShapefile(csv+'.csv)
+
+    #create temp shapefile with sql filter
+    cmd = 'ogr2ogr -f "CSV" '+csv+'.csv '+shp+'.shp'
+    print cmd
+    result = os.system(cmd)
+    print result
     
+
 def copyshapefile(inshp,outshp):
+    
     pth = os.getcwd()
 
 
@@ -113,8 +128,16 @@ def mergeshapefile(inshp,addshp):
     print cmd
     result = os.system(cmd)
     print result
+    
+def transform(fromepsg,toepsg,toshp,outshp)
+    #remove temp file in case it exsists
+    deleteShapefile(inshp)
 
+    cmd = 'ogr2ogr   -f "ESRI Shapefile" -s_srs "EPSG:"'+fromepsg+'"  -t_srs "EPSG:'+toepsg+'" '+toshp+' '+outshp
 
+    print cmd
+    result = os.system(cmd)
+    print result
 #sql=""
 #makeopenblock(shp,sql)
 
@@ -161,53 +184,53 @@ sql="SELECT *, cast('name' as character(150) )as 'title'   FROM "+name
 makeopenblockshapes(shp,sql)
 sql="SELECT *, cast('label' as character(150) )as 'locname'   FROM "+name
 makeopenblockshapes(shp,sql)
-sql="SELECT *, cast('label' as character(150) )as 'locname'   FROM coa_development_locations_view"
+sql="SELECT *, cast('label' as character(150) )as 'locname'   FROM "+name
 makeopenblockshapes(shp,sql)
 specchar = '\\"-\\"'
-sql="SELECT *, cast(concat('label' ,"+specchar+" , 'project_id'  ,  "+specchar+" , 'name'  , "+specchar+", 'reason') as character(254) )as 'desc'   FROM coa_development_locations_view"
+sql="SELECT *, cast(concat('label' ,"+specchar+" , 'project_id'  ,  "+specchar+" , 'name'  , "+specchar+", 'reason') as character(254) )as 'desc'   FROM "+name
 makeopenblockshapes(shp,sql)
 specchar = '\\"/\\"'
-sql="SELECT *,cast(concat(substr(cast('startdate' as character(150)),6,6),"+specchar+",substr(cast('startdate' as character(150)),1,4)) as character(150)) as item_date  FROM coa_development_locations_view  "
+sql="SELECT *,cast(concat(substr(cast('startdate' as character(150)),6,6),"+specchar+",substr(cast('startdate' as character(150)),1,4)) as character(150)) as item_date  FROM "+name
 makeopenblockshapes(shp,sql)
 
 outshp1="test1.shp"
 escapedone='\\"Under Review\\"'
 escapedtwo='\\"1\\"'
-sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM coa_development_locations_view where status="+escapedtwo
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM "+name" where status="+escapedtwo
 makeashape(shp,outshp1,sql)
 
 outshp2="test2.shp"
 escapedone='\\"Unknown\\"'
 escapedtwo='\\"2\\"'
-sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM coa_development_locations_view where status="+escapedtwo
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM "+name+" where status="+escapedtwo
 makeashape(shp,outshp2,sql)
 
 
 outshp3="test3.shp"
 escapedone='\\"Project Approved\\"'
 escapedtwo='\\"3\\"'
-sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM coa_development_locations_view where status="+escapedtwo
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM "+name+" where status="+escapedtwo
 makeashape(shp,outshp3,sql)
 
 
 outshp4="test4.shp"
 escapedone='\\"Denied\\"'
 escapedtwo='\\"4\\"'
-sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM coa_development_locations_view where status="+escapedtwo
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM "+name+" where status="+escapedtwo
 makeashape(shp,outshp4,sql)
 
 
 outshp5="test5.shp"
 escapedone='\\"Project Completed\\"'
 escapedtwo='\\"5\\"'
-sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM coa_development_locations_view where status="+escapedtwo
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM "+name+" where status="+escapedtwo
 makeashape(shp,outshp5,sql)
 
 
 outshp6="test6.shp"
 escapedone='\\"Application Withdrawn\\"'
 escapedtwo='\\"5\\"'
-sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM coa_development_locations_view where status="+escapedtwo
+sql="SELECT *, cast("+escapedone+" as character(150) )as 'reason'   FROM "+name+" where status="+escapedtwo
 makeashape(shp,outshp6,sql)
 
 ouputshp="temp.shp"
@@ -225,6 +248,27 @@ deleteShapefile(outshp4)
 deleteShapefile(outshp5)
 deleteShapefile(outshp6)
 #deleteShapefile(ouputshp)
+
+#transform data
+frme = '2264'
+toe = '4326'
+transform(frme,toe,'coa_city_4326.shp','coa_active_jurisdictions.shp')
+transform(frme,toe,'coa_crime_4326.shp','coa_crime_mapper_locations_view.shp')
+transform(frme,toe,'coa_hoods_4326.shp','coa_asheville_neighborhoods.shp')
+transform(frme,toe,'coa_development_4326.shp','coa_development_locations_view.shp')
+
+name="coa_crime_4326"
+shp="coa_crime_4326.shp"
+sql="SELECT *, cast(substr(OGR_GEOM_WKT,27,17) as numeric(12,10)) as lat, cast(substr(OGR_GEOM_WKT,8,19) as numeric(12,10)) as long FROM "+name+" WHERE agency='APD'"
+makeopenblockshapes(shp,sql)
+
+name="coa_development_4326"
+shp="coa_development_4326.shp"
+sql="SELECT *, cast(substr(OGR_GEOM_WKT,27,17) as numeric(12,10)) as lat, cast(substr(OGR_GEOM_WKT,8,19) as numeric(12,10)) as long FROM "+name
+makeopenblockshapes(shp,sql)
+
+makecsv('coa_crime','coa_crime_4326')
+makecsv('coa_development','coa_development_4326')
 
 
 ##sql=""
