@@ -9,7 +9,7 @@ from osgeo import osr
 #installed gdal from 32bit http://vbkto.dyndns.org/sdk/Download.aspx?file=release-1400-gdal-1-9-mapserver-6-0\gdal-19-1400-core.msi
 #or 64bit http://vbkto.dyndns.org/sdk/Download.aspx?file=release-1400-x64-gdal-1-9-mapserver-6-0\gdal-19-1400-x64-core.msi
 #I had to copy the GDAL directory to c: to avoid issues with the space in program files directory
-#this script is no yet ready for linux....
+#this script is not yet ready for linux....
 
 def getShapeName(zipFilename):
     theShpName = zipFilename.replace('zip','shp')
@@ -54,7 +54,7 @@ def makeopenblockshapes(inshp,sql):
     deleteShapefile(outshp)
 
     #create temp shapefile with sql filter
-    cmd = 'ogr2ogr.exe ' + pth + '\\' + outshp +  ' ' + pth + '\\'+inshp+' -sql \"' + sql  +'\"'
+    cmd = 'ogr2ogr ' + pth + '/' + outshp +  ' ' + pth + '/'+inshp+' -sql \"' + sql  +'\"'
     print cmd
     result = os.system(cmd)
     print result
@@ -66,7 +66,7 @@ def makeopenblockshapes(inshp,sql):
     #recreate orig
     theShpName = outshp.replace('.shp','')
     rsql = "SELECT * FROM "+theShpName+" WHERE fid>0"
-    cmd = 'ogr2ogr.exe ' + pth + '\\' + inshp +  ' ' + pth + '\\' + outshp + ' -sql \"' + rsql  +'\"'
+    cmd = 'ogr2ogr ' + pth + '/' + inshp +  ' ' + pth + '/' + outshp + ' -sql \"' + rsql  +'\"'
     print cmd
     result = os.system(cmd)
     print result
@@ -78,13 +78,13 @@ def makeopenblockshapes(inshp,sql):
 
 def makeashape(inshp,outshp,sql):
     pth = os.getcwd()
-    outshp = 'temp.shp'
+    #outshp = 'temp.shp'
 
     #remove temp file in case it exsists
     deleteShapefile(outshp)
 
     #create temp shapefile with sql filter
-    cmd = 'ogr2ogr.exe ' + pth + '\\' + outshp +  ' ' + pth + '\\'+inshp+' -sql \"' + sql  +'\"'
+    cmd = 'ogr2ogr ' + pth + '/' + outshp +  ' ' + pth + '/'+inshp+' -sql \"' + sql  +'\"'
     print cmd
     result = os.system(cmd)
     print result
@@ -94,10 +94,10 @@ def copyshapefile(inshp,outshp):
 
 
     #remove temp file in case it exsists
-    deleteShapefile(outshp)
+    deleteShapefile(inshp)
 
     #create temp shapefile with sql filter
-    cmd = '\\ogr2ogr.exe ' + outshp + ' ' + inshp
+    cmd = 'ogr2ogr ' + inshp + ' ' + outshp
     print cmd
     result = os.system(cmd)
     print result
@@ -107,9 +107,9 @@ def copyshapefile(inshp,outshp):
 def mergeshapefile(inshp,addshp):
     pth = os.getcwd()
 
-
+    theShpName = inshp.replace('.shp','')
     #create temp shapefile with sql filter
-    cmd = 'ogr2ogr.exe -update -append '+inshp+' '+addshp+' -nln test'
+    cmd = 'ogr2ogr -update -append '+inshp+' '+addshp+' -nln ' + theShpName
     print cmd
     result = os.system(cmd)
     print result
@@ -167,7 +167,7 @@ specchar = '\\"-\\"'
 sql="SELECT *, cast(concat('label' ,"+specchar+" , 'project_id'  ,  "+specchar+" , 'name'  , "+specchar+", 'reason') as character(254) )as 'desc'   FROM coa_development_locations_view"
 makeopenblockshapes(shp,sql)
 specchar = '\\"/\\"'
-sql="SELECT *,cast(concat(substr(cast('startdate' as character(150)),6,6),\"/\",substr(cast('startdate' as character(150)),1,4)) as character(150)) as item_date  FROM coa_development_locations_view  "
+sql="SELECT *,cast(concat(substr(cast('startdate' as character(150)),6,6),"+specchar+",substr(cast('startdate' as character(150)),1,4)) as character(150)) as item_date  FROM coa_development_locations_view  "
 makeopenblockshapes(shp,sql)
 
 outshp1="test1.shp"
@@ -224,7 +224,7 @@ deleteShapefile(outshp3)
 deleteShapefile(outshp4)
 deleteShapefile(outshp5)
 deleteShapefile(outshp6)
-deleteShapefile(ouputshp)
+#deleteShapefile(ouputshp)
 
 
 ##sql=""
